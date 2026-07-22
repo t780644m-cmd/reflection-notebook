@@ -393,7 +393,7 @@ async function saveTeacherPin(pin){
   state.teacherPin = pin;
 }
 
-/* Gemini API Call Fix */
+/* Gemini API Robust Handler */
 async function callAI(messages, system){
   var contents = [];
   messages.forEach(function(m){
@@ -403,33 +403,34 @@ async function callAI(messages, system){
     });
   });
 
-  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + GEMINI_API_KEY;
-  
-  var res = await fetch(url, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      system_instruction: { parts: [{ text: system }] },
-      contents: contents
-    })
-  });
+  var endpoints = [
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API_KEY,
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=" + GEMINI_API_KEY,
+    "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=" + GEMINI_API_KEY
+  ];
 
-  if(!res.ok){
-    // Fallback to gemini-pro if flash fails
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + GEMINI_API_KEY;
-    res = await fetch(url, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({ contents: contents })
-    });
+  var lastErr = null;
+  for(var i=0; i<endpoints.length; i++){
+    try {
+      var res = await fetch(endpoints[i], {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: system }] },
+          contents: contents
+        })
+      });
+      if(res.ok){
+        var data = await res.json();
+        if(data.candidates && data.candidates[0] && data.candidates[0].content){
+          return data.candidates[0].content.parts[0].text.trim();
+        }
+      }
+    } catch(e) {
+      lastErr = e;
+    }
   }
-
-  if(!res.ok){ throw new Error('API error '+res.status); }
-  var data = await res.json();
-  if(!data.candidates || !data.candidates[0] || !data.candidates[0].content){
-    throw new Error('Invalid AI response');
-  }
-  return data.candidates[0].content.parts[0].text.trim();
+  throw new Error(lastErr ? lastErr.message : 'API failed');
 }
 
 function chatSystemPrompt(subjName, unitName){
