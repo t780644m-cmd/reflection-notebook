@@ -87,13 +87,6 @@ html,body{margin:0;padding:0;}
 }
 .rn-chip.active{background:var(--ink); border-color:var(--ink); color:#fff;}
 .rn-chip:hover:not(.active){background:#FAF3E3;}
-.rn-empty-hint{font-size:13px;color:var(--ink-soft);}
-
-.rn-selected-line{
-  display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-soft);
-  margin-bottom:16px; padding-top:10px; border-top:1.5px dashed var(--paper-line);
-}
-.rn-selected-line b{color:var(--ink); font-weight:700;}
 
 .rn-cta{
   width:100%; border:none; cursor:pointer; padding:16px;
@@ -106,13 +99,6 @@ html,body{margin:0;padding:0;}
 .rn-cta:disabled{background:#D9D3C2;cursor:not-allowed;}
 
 .rn-section-title{font-family:'Kosugi Maru',sans-serif;font-size:15px;margin:0 0 12px;color:var(--ink);}
-
-.rn-filterrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
-.rn-filterchip{
-  border:1px solid var(--paper-line); background:#fff; cursor:pointer;
-  padding:5px 12px; border-radius:999px; font-size:12.5px; color:var(--ink-soft);
-}
-.rn-filterchip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
 
 .rn-card{
   border:1px solid #EFE8D6; border-radius:14px; padding:14px 16px; margin-bottom:10px;
@@ -191,8 +177,7 @@ html,body{margin:0;padding:0;}
 .rn-retry{border:none;background:#B24C3F;color:#fff;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;margin-left:8px;}
 
 .rn-sum-field{margin-bottom:16px;}
-.rn-sum-label{font-family:'Kosugi Maru',sans-serif;font-size:13.5px;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
-.rn-sum-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.rn-sum-label{font-family:'Kosugi Maru',sans-serif;font-size:13.5px;margin-bottom:6px;}
 .rn-sum-textarea{
   width:100%; border:1.5px solid var(--paper-line); border-radius:10px; padding:10px 12px;
   font-size:14px; font-family:inherit; resize:vertical; min-height:56px; outline:none;
@@ -217,56 +202,19 @@ html,body{margin:0;padding:0;}
 .rn-name-hint{font-size:11.5px;color:var(--ink-soft);margin-bottom:18px;}
 .rn-tag-student{background:var(--ink);margin-right:6px;}
 
-.rn-gate-wrap{max-width:360px;margin:40px auto 0;text-align:center;}
+.rn-gate-wrap{max-width:360px;margin:20px auto 0;text-align:center;}
 .rn-gate-icon{
   width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
   background:linear-gradient(135deg,var(--sky),var(--lavender));
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;
 }
 .rn-gate-title{font-family:'Kosugi Maru',sans-serif;font-size:18px;margin-bottom:8px;}
-.rn-gate-desc{font-size:13px;color:var(--ink-soft);margin-bottom:20px;line-height:1.7;}
+.rn-gate-desc{font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;}
 .rn-pin-input{
   width:100%;border:1.5px solid var(--paper-line);border-radius:12px;padding:13px;
-  font-size:18px;text-align:center;letter-spacing:4px;font-family:inherit;outline:none;margin-bottom:10px;
+  font-size:18px;text-align:center;letter-spacing:4px;font-family:inherit;outline:none;margin-bottom:12px;
 }
 .rn-pin-input:focus{border-color:var(--sky);}
-.rn-gate-err{color:#B24C3F;font-size:12.5px;margin-bottom:10px;}
-.rn-gate-btnrow{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
-
-.rn-teach-tabs{display:flex;gap:8px;margin-bottom:18px;}
-.rn-teach-tab{
-  flex:1; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer;
-  padding:10px; border-radius:12px; font-family:'Kosugi Maru',sans-serif; font-size:13.5px; color:var(--ink-soft);
-}
-.rn-teach-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
-.rn-teach-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.rn-select{
-  border:1.5px solid var(--paper-line); background:#fff; border-radius:999px; padding:7px 12px;
-  font-size:13px; font-family:inherit; color:var(--ink); outline:none;
-}
-.rn-teach-count{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
-
-.rn-subj-block{background:#fff;border:1px solid #EFE8D6;border-radius:12px;padding:12px 14px;margin-bottom:10px;}
-.rn-subj-block-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;}
-.rn-subj-name{display:flex;align-items:center;gap:8px;font-family:'Kosugi Maru',sans-serif;font-size:14.5px;}
-.rn-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0;}
-.rn-unit-chip{
-  display:inline-flex;align-items:center;gap:5px;background:#FAF3E3;border-radius:999px;
-  padding:5px 10px;font-size:12.5px;margin:0 6px 6px 0;
-}
-.rn-unit-chip button{border:none;background:none;color:var(--ink-soft);cursor:pointer;font-size:13px;padding:0;}
-.rn-addrow{display:flex;gap:6px;margin-top:6px;}
-.rn-addrow input{
-  flex:1;border:1.5px solid var(--paper-line);border-radius:8px;padding:7px 10px;font-size:13px;
-  font-family:inherit;outline:none;
-}
-.rn-addrow input:focus{border-color:var(--sky);}
-.rn-addrow button{
-  border:none;background:var(--ink);color:#fff;border-radius:8px;padding:0 12px;font-size:13px;cursor:pointer;
-}
-.rn-trash-btn{border:none;background:none;color:var(--ink-soft);cursor:pointer;padding:4px;}
-.rn-trash-btn:hover{color:#B24C3F;}
-.rn-trash-btn svg{width:15px;height:15px;}
 
 .rn-toast{
   position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
@@ -298,7 +246,6 @@ import {
   getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
-// Firebaseの設定情報
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCQ61dB6f0ccPisuFjeOdWTLNFrhitPIdk",
   authDomain: "reflection-notebook-12bd6.firebaseapp.com",
@@ -308,7 +255,6 @@ const FIREBASE_CONFIG = {
   appId: "1:908464134365:web:68edba9d71643d5bb1a334"
 };
 
-// Gemini APIキー
 const GEMINI_API_KEY = "AQ.Ab8RN6LoPDWa2Rxpi53Nl4J4dIQYZv7rYsnDPLhePNIKMiZXZw";
 
 const firebaseApp = initializeApp(FIREBASE_CONFIG);
@@ -319,19 +265,19 @@ async function fsGet(key){
     const snap = await getDoc(doc(db, 'shared', key));
     if(!snap.exists()) return null;
     return { key: key, value: snap.data().value, shared: true };
-  }catch(e){ console.error('firestore get failed', key, e); return null; }
+  }catch(e){ return null; }
 }
 async function fsSet(key, value){
   try{
     await setDoc(doc(db, 'shared', key), { value: value, updatedAt: Date.now() });
     return { key: key, value: value, shared: true };
-  }catch(e){ console.error('firestore set failed', key, e); return null; }
+  }catch(e){ return null; }
 }
 async function fsDelete(key){
   try{
     await deleteDoc(doc(db, 'shared', key));
     return { key: key, deleted: true, shared: true };
-  }catch(e){ console.error('firestore delete failed', key, e); return null; }
+  }catch(e){ return null; }
 }
 async function fsList(prefix){
   try{
@@ -339,7 +285,7 @@ async function fsList(prefix){
     const keys = [];
     snaps.forEach(function(d){ if(!prefix || d.id.indexOf(prefix)===0) keys.push(d.id); });
     return { keys: keys, prefix: prefix, shared: true };
-  }catch(e){ console.error('firestore list failed', prefix, e); return null; }
+  }catch(e){ return {keys:[]}; }
 }
 
 function lsGet(key){
@@ -375,7 +321,6 @@ var state = {
   view: 'home',
   selectedSubjectId: null,
   selectedUnitId: null,
-  historyFilter: 'all',
   openCardId: null,
   session: null,
   summaryDraft: null,
@@ -383,11 +328,7 @@ var state = {
   studentName: '',
   teacherPin: null,
   teacherUnlocked: false,
-  teacherGateStep: null,
-  teacherGateError: null,
-  teacherTab: 'records',
-  teacherStudentFilter: 'all',
-  teacherSubjectFilter: 'all'
+  teacherGateStep: null
 };
 
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -452,7 +393,7 @@ async function saveTeacherPin(pin){
   state.teacherPin = pin;
 }
 
-/* Gemini Direct API Call */
+/* Gemini API Call Fix */
 async function callAI(messages, system){
   var contents = [];
   messages.forEach(function(m){
@@ -462,16 +403,26 @@ async function callAI(messages, system){
     });
   });
 
-  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API_KEY;
+  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + GEMINI_API_KEY;
   
   var res = await fetch(url, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: system }] },
+      system_instruction: { parts: [{ text: system }] },
       contents: contents
     })
   });
+
+  if(!res.ok){
+    // Fallback to gemini-pro if flash fails
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + GEMINI_API_KEY;
+    res = await fetch(url, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ contents: contents })
+    });
+  }
 
   if(!res.ok){ throw new Error('API error '+res.status); }
   var data = await res.json();
@@ -482,17 +433,16 @@ async function callAI(messages, system){
 }
 
 function chatSystemPrompt(subjName, unitName){
-  return "あなたは小学校の授業の最後に行う「ふりかえり」を手伝う、やさしい先生のようなAIです。相手は児童です。"+
+  return "あなたは小学校の授業の最後に行う「ふりかえり」を手伝う、やさしい先生のようなAIです。相手は小学生です。"+
   "今の教科は「"+subjName+"」、単元は「"+(unitName||'（単元未設定）')+"」です。"+
-  "\n\nルール:"+
   "\n・一度に質問は1つだけ。短く、やさしい言葉で聞いてください。"+
   "\n・児童の返事には共感して褒めてから、次の質問につなげます。"+
-  "\n・文字数は1〜3文程度。絵文字は使わないでください。";
+  "\n・1〜3文程度で答えてください。";
 }
 
 function summarySystemPrompt(subjName, unitName){
   return "これまでの会話を踏まえて、今日の「"+subjName+"（"+(unitName||'単元未設定')+"）」の授業のふりかえりをまとめます。"+
-  "次のJSON形式のみを出力してください。前置きやコードブロック（```）は不要です。"+
+  "次のJSON形式のみを出力してください。前置きや解説は一切不要です。"+
   "\n{\"manabi\":\"学んだこと\",\"wakatta\":\"わかったこと\",\"wakaranai\":\"わからなかったこと\",\"yokudekita\":\"よくできたこと\",\"muzukashikatta\":\"難しかったこと\",\"hitokoto\":\"一言まとめ\"}";
 }
 
@@ -622,7 +572,7 @@ function renderChat(){
   html += '</div>';
 
   html += '<div class="rn-inputrow"><textarea id="rn-input" class="rn-textarea" placeholder="ここに書いてね" '+(sess.loading?'disabled':'')+'></textarea><button class="rn-send" onclick="RN.sendAnswer()" '+(sess.loading?'disabled':'')+'>おくる</button></div>';
-  if(sess.messages.filter(function(m){return m.role==='assistant' && !m.hidden;}).length>=3 && !sess.loading){
+  if(sess.messages.filter(function(m){return m.role==='assistant' && !m.hidden;}).length>=2 && !sess.loading){
     html += '<div class="rn-finish-row"><button class="rn-finish-btn" onclick="RN.finishSession()">ふりかえりをまとめる</button></div>';
   }
   html += '</div>';
@@ -667,7 +617,7 @@ async function kickoff(){
   var sess = state.session;
   var subj = subjectById(sess.subjectId);
   var unit = unitById(subj, sess.unitId);
-  sess.messages.push({role:'user', content:'（ふりかえりを始めます。挨拶して質問してください。）', hidden:true});
+  sess.messages.push({role:'user', content:'こんにちは。今日の授業のふりかえりをはじめたいです。', hidden:true});
   try{
     var reply = await callAI(sess.messages, chatSystemPrompt(subj.name, unit?unit.name:null));
     sess.messages.push({role:'assistant', content:reply});
@@ -753,9 +703,9 @@ RN.openTeacherGate = function(){
 function renderTeacherGate(){
   var html = '<div class="rn-page"><div class="rn-gate-wrap"><div class="rn-gate-icon">🎓</div>';
   if(state.teacherGateStep==='setup'){
-    html += '<div class="rn-gate-title">パスコード設定</div><input type="password" class="rn-pin-input" id="tp-input1" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherSetup()">設定</button>';
+    html += '<div class="rn-gate-title">パスコード設定</div><div class="rn-gate-desc">先生ページ用の好きなパスワードを決めて入力してください</div><input type="password" class="rn-pin-input" id="tp-input1" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherSetup()">設定して進む</button>';
   } else {
-    html += '<div class="rn-gate-title">せんせい用</div><input type="password" class="rn-pin-input" id="tp-input" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherPin()">入力</button>';
+    html += '<div class="rn-gate-title">せんせい用</div><div class="rn-gate-desc">設定したパスコードを入力してください</div><input type="password" class="rn-pin-input" id="tp-input" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherPin()">ひらく</button>';
   }
   html += '</div></div>';
   return html;
@@ -769,12 +719,17 @@ RN.submitTeacherSetup = async function(){
 RN.submitTeacherPin = function(){
   var p = document.getElementById('tp-input').value.trim();
   if(p === state.teacherPin){ state.teacherUnlocked = true; state.view = 'teacher'; renderApp(); }
+  else { alert('パスコードがちがいます'); }
 };
 
 function renderTeacherArea(){
-  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="state.view=\'home\';renderApp();"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>せんせい用</b></div></div>';
+  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="state.view=\'home\';renderApp();"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>せんせい用管理画面（全員の記録）</b></div></div>';
   html += '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  state.reflections.forEach(function(r){ html += renderHistoryCard(r, {showStudent:true, deletable:true}); });
+  if(!state.reflections.length){
+    html += '<div class="rn-empty-state">提出されたふりかえりはまだありません。</div>';
+  } else {
+    state.reflections.forEach(function(r){ html += renderHistoryCard(r, {showStudent:true, deletable:true}); });
+  }
   html += '</div>';
   return html;
 }
