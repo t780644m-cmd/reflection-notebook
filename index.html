@@ -1,758 +1,132 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap');
-
-:root{
-  --paper:#FBF6EA;
-  --paper-line:#E4D9BD;
-  --ink:#2E3548;
-  --ink-soft:#6E7280;
-  --coral:#E8836A;
-  --sage:#7FA593;
-  --sky:#6D93B8;
-  --mustard:#DDA83A;
-  --lavender:#9B85B0;
-  --ring:#C9BFA0;
-  --shadow: 0 6px 18px rgba(46,53,72,0.10);
-  --shadow-sm: 0 2px 6px rgba(46,53,72,0.10);
-}
-
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
-#reflect-root{
-  font-family:'Zen Maru Gothic', 'Kosugi Maru', sans-serif;
-  color:var(--ink);
-  background: linear-gradient(var(--paper), var(--paper));
-  min-height:100vh;
-  padding:28px 16px 60px;
-  position:relative;
-}
-#reflect-root *{font-family:inherit;}
-
-.rn-wrap{max-width:760px;margin:0 auto;}
-
-.rn-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;}
-.rn-title{font-family:'Kosugi Maru',sans-serif;font-size:26px;color:var(--ink);display:flex;align-items:center;gap:10px;}
-.rn-title-mark{
-  width:34px;height:34px;border-radius:99px;
-  background:linear-gradient(135deg, var(--coral), var(--mustard));
-  display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;flex-shrink:0;
-  box-shadow: var(--shadow-sm);
-}
-.rn-sub{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
-.rn-gear{
-  width:38px;height:38px;border-radius:50%;border:1.5px solid var(--paper-line);
-  background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;
-  transition:transform .15s ease, background .15s ease; flex-shrink:0;
-}
-.rn-gear:hover{background:#fff8ec;transform:rotate(20deg);}
-.rn-gear svg{width:18px;height:18px;color:var(--ink-soft);}
-
-.rn-page{
-  position:relative;
-  background:#fff;
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  padding:34px 26px 26px;
-  margin-bottom:22px;
-  border:1px solid #EFE8D6;
-}
-.rn-rings{
-  position:absolute; top:-13px; left:0; right:0;
-  display:flex; justify-content:space-evenly; padding:0 30px;
-  pointer-events:none;
-}
-.rn-rings span{
-  width:20px;height:20px;border-radius:50%;
-  background:var(--paper);
-  border:3px solid var(--ring);
-  box-shadow: inset 0 2px 3px rgba(0,0,0,0.12);
-}
-
-.rn-tabrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.rn-tab{
-  border:none; cursor:pointer; padding:9px 16px 8px;
-  border-radius:10px 10px 3px 3px;
-  font-family:'Kosugi Maru',sans-serif; font-size:14px;
-  color:#fff; opacity:0.55; transform:translateY(2px);
-  transition:all .15s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-}
-.rn-tab.active{opacity:1; transform:translateY(0); box-shadow:var(--shadow-sm);}
-.rn-tab:hover{opacity:0.85;}
-
-.rn-chiprow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
-.rn-chip{
-  border:1.5px solid var(--paper-line); background:#fff; cursor:pointer;
-  padding:7px 14px; border-radius:999px; font-size:13.5px; color:var(--ink);
-  transition:all .15s ease;
-}
-.rn-chip.active{background:var(--ink); border-color:var(--ink); color:#fff;}
-.rn-chip:hover:not(.active){background:#FAF3E3;}
-
-.rn-cta{
-  width:100%; border:none; cursor:pointer; padding:16px;
-  border-radius:14px; font-family:'Kosugi Maru',sans-serif; font-size:16px; color:#fff;
-  background:linear-gradient(135deg, var(--coral), #ef9b7e);
-  box-shadow: var(--shadow-sm);
-  transition:transform .12s ease, box-shadow .12s ease;
-}
-.rn-cta:hover:not(:disabled){transform:translateY(-2px); box-shadow:var(--shadow);}
-.rn-cta:disabled{background:#D9D3C2;cursor:not-allowed;}
-
-.rn-section-title{font-family:'Kosugi Maru',sans-serif;font-size:15px;margin:0 0 12px;color:var(--ink);}
-
-.rn-card{
-  border:1px solid #EFE8D6; border-radius:14px; padding:14px 16px; margin-bottom:10px;
-  background:#FFFDF7; cursor:pointer; transition:box-shadow .15s ease;
-}
-.rn-card:hover{box-shadow:var(--shadow-sm);}
-.rn-card-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
-.rn-tag{font-size:11.5px;color:#fff;padding:3px 10px;border-radius:999px;font-family:'Kosugi Maru',sans-serif;}
-.rn-date{font-size:12px;color:var(--ink-soft);}
-.rn-card-excerpt{font-size:14px;color:var(--ink);line-height:1.5;}
-.rn-card-detail{margin-top:12px;padding-top:12px;border-top:1px dashed var(--paper-line);display:none;}
-.rn-card.open .rn-card-detail{display:block;}
-.rn-field{margin-bottom:10px;}
-.rn-field-label{font-size:11.5px;color:var(--ink-soft);margin-bottom:2px;}
-.rn-field-val{font-size:13.5px;line-height:1.6;white-space:pre-wrap;}
-.rn-del-btn{
-  border:none;background:none;color:#C0645A;font-size:12px;cursor:pointer;margin-top:8px;
-  text-decoration:underline;
-}
-.rn-empty-state{
-  text-align:center; padding:36px 10px; color:var(--ink-soft); font-size:13.5px;
-}
-
-.rn-chat-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.rn-back{
-  border:none;background:#fff;border:1.5px solid var(--paper-line);width:34px;height:34px;border-radius:50%;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.rn-back svg{width:16px;height:16px;color:var(--ink-soft);}
-.rn-chat-meta{font-size:13px;color:var(--ink-soft);}
-.rn-chat-meta b{color:var(--ink);}
-
-.rn-log{
-  background:
-    repeating-linear-gradient(var(--paper) 0px, var(--paper) 30px, var(--paper-line) 31px, var(--paper) 32px);
-  border-radius:12px; padding:16px 14px; min-height:280px; max-height:440px; overflow-y:auto;
-  margin-bottom:14px; border:1px solid #EFE8D6;
-}
-.rn-bubble-row{display:flex; margin-bottom:12px;}
-.rn-bubble-row.me{justify-content:flex-end;}
-.rn-bubble{
-  max-width:78%; padding:10px 14px; border-radius:16px; font-size:14px; line-height:1.6;
-  box-shadow:var(--shadow-sm);
-}
-.rn-bubble.ai{background:#fff; border-bottom-left-radius:4px;}
-.rn-bubble.me{background:var(--subj-color, var(--coral)); color:#fff; border-bottom-right-radius:4px;}
-.rn-ai-avatar{
-  width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--lavender));
-  flex-shrink:0;margin-right:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;
-}
-.rn-typing{display:flex;gap:4px;padding:6px 4px;}
-.rn-typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);opacity:.5;animation:rnTyping 1s infinite ease-in-out;}
-.rn-typing span:nth-child(2){animation-delay:.15s;}
-.rn-typing span:nth-child(3){animation-delay:.3s;}
-@keyframes rnTyping{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-4px);opacity:1;}}
-
-.rn-inputrow{display:flex;gap:8px;align-items:flex-end;}
-.rn-textarea{
-  flex:1; border:1.5px solid var(--paper-line); border-radius:12px; padding:11px 13px;
-  font-size:14px; resize:none; font-family:inherit; min-height:44px; max-height:120px;
-  outline:none;
-}
-.rn-textarea:focus{border-color:var(--sky);}
-.rn-send{
-  border:none;background:var(--ink);color:#fff;border-radius:12px;padding:0 18px;height:44px;
-  cursor:pointer;font-family:'Kosugi Maru',sans-serif;font-size:13.5px;flex-shrink:0;
-}
-.rn-send:disabled{background:#D9D3C2;cursor:not-allowed;}
-.rn-finish-row{text-align:center;margin-top:14px;}
-.rn-finish-btn{
-  border:1.5px solid var(--sage); background:#fff; color:var(--sage); cursor:pointer;
-  padding:10px 20px; border-radius:999px; font-family:'Kosugi Maru',sans-serif; font-size:13.5px;
-}
-.rn-finish-btn:hover{background:var(--sage);color:#fff;}
-.rn-err{background:#FBEAE7;color:#B24C3F;padding:10px 12px;border-radius:10px;font-size:13px;margin-bottom:10px;}
-.rn-retry{border:none;background:#B24C3F;color:#fff;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;margin-left:8px;}
-
-.rn-sum-field{margin-bottom:16px;}
-.rn-sum-label{font-family:'Kosugi Maru',sans-serif;font-size:13.5px;margin-bottom:6px;}
-.rn-sum-textarea{
-  width:100%; border:1.5px solid var(--paper-line); border-radius:10px; padding:10px 12px;
-  font-size:14px; font-family:inherit; resize:vertical; min-height:56px; outline:none;
-}
-.rn-sum-textarea:focus{border-color:var(--sky);}
-.rn-sum-actions{display:flex;gap:10px;margin-top:6px;}
-.rn-save-btn{
-  flex:1; border:none;background:linear-gradient(135deg,var(--sage),#a3c2ac);color:#fff;
-  border-radius:12px;padding:14px;font-family:'Kosugi Maru',sans-serif;font-size:15px;cursor:pointer;
-}
-.rn-secondary-btn{
-  border:1.5px solid var(--paper-line);background:#fff;color:var(--ink-soft);
-  border-radius:12px;padding:14px 18px;font-size:13.5px;cursor:pointer;
-}
-.rn-loading-block{text-align:center;padding:50px 10px;color:var(--ink-soft);font-size:13.5px;}
-
-.rn-name-input{
-  width:100%; border:1.5px solid var(--paper-line); border-radius:12px; padding:11px 13px;
-  font-size:15px; font-family:inherit; outline:none; margin-bottom:6px;
-}
-.rn-name-input:focus{border-color:var(--sky);}
-.rn-name-hint{font-size:11.5px;color:var(--ink-soft);margin-bottom:18px;}
-.rn-tag-student{background:var(--ink);margin-right:6px;}
-
-.rn-gate-wrap{max-width:360px;margin:20px auto 0;text-align:center;}
-.rn-gate-icon{
-  width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
-  background:linear-gradient(135deg,var(--sky),var(--lavender));
-  display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;
-}
-.rn-gate-title{font-family:'Kosugi Maru',sans-serif;font-size:18px;margin-bottom:8px;}
-.rn-gate-desc{font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;}
-.rn-pin-input{
-  width:100%;border:1.5px solid var(--paper-line);border-radius:12px;padding:13px;
-  font-size:18px;text-align:center;letter-spacing:4px;font-family:inherit;outline:none;margin-bottom:12px;
-}
-.rn-pin-input:focus{border-color:var(--sky);}
-
-.rn-toast{
-  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
-  background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;font-size:13.5px;
-  box-shadow:var(--shadow); z-index:80; opacity:0; transition:opacity .25s ease;
-}
-.rn-toast.show{opacity:1;}
-</style>
-
-<div id="reflect-root">
-  <div class="rn-wrap">
-    <div class="rn-header">
-      <div>
-        <div class="rn-title"><span class="rn-title-mark">✎</span>ふりかえりノート</div>
-        <div class="rn-sub" id="rn-datesub"></div>
-      </div>
-      <button class="rn-gear" onclick="RN.openTeacherGate()" title="せんせい用" aria-label="せんせい用">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      </button>
-    </div>
-    <div id="rn-view"></div>
-  </div>
-</div>
-<div id="rn-toast" class="rn-toast"></div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import {
-  getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs
-} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
-
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyCQ61dB6f0ccPisuFjeOdWTLNFrhitPIdk",
-  authDomain: "reflection-notebook-12bd6.firebaseapp.com",
-  projectId: "reflection-notebook-12bd6",
-  storageBucket: "reflection-notebook-12bd6.firebasestorage.app",
-  messagingSenderId: "908464134365",
-  appId: "1:908464134365:web:68edba9d71643d5bb1a334"
-};
-
-const GEMINI_KEY = "AQ.Ab8RN6LoPDWa2Rxpi53Nl4J4dIQYZv7rYsnDPLhePNIKMiZXZw";
-
-const firebaseApp = initializeApp(FIREBASE_CONFIG);
-const db = getFirestore(firebaseApp);
-
-async function fsGet(key){
-  try{
-    const snap = await getDoc(doc(db, 'shared', key));
-    if(!snap.exists()) return null;
-    return { key: key, value: snap.data().value, shared: true };
-  }catch(e){ return null; }
-}
-async function fsSet(key, value){
-  try{
-    await setDoc(doc(db, 'shared', key), { value: value, updatedAt: Date.now() });
-    return { key: key, value: value, shared: true };
-  }catch(e){ return null; }
-}
-async function fsDelete(key){
-  try{
-    await deleteDoc(doc(db, 'shared', key));
-    return { key: key, deleted: true, shared: true };
-  }catch(e){ return null; }
-}
-async function fsList(prefix){
-  try{
-    const snaps = await getDocs(collection(db, 'shared'));
-    const keys = [];
-    snaps.forEach(function(d){ if(!prefix || d.id.indexOf(prefix)===0) keys.push(d.id); });
-    return { keys: keys, prefix: prefix, shared: true };
-  }catch(e){ return {keys:[]}; }
-}
-
-function lsGet(key){
-  try{
-    const v = localStorage.getItem('rn_'+key);
-    return Promise.resolve(v===null ? null : { key: key, value: v, shared: false });
-  }catch(e){ return Promise.resolve(null); }
-}
-function lsSet(key, value){
-  try{
-    localStorage.setItem('rn_'+key, value);
-    return Promise.resolve({ key: key, value: value, shared: false });
-  }catch(e){ return Promise.resolve(null); }
-}
-
-window.storage = {
-  get:    function(key, shared){ return shared ? fsGet(key)    : lsGet(key); },
-  set:    function(key, value, shared){ return shared ? fsSet(key, value) : lsSet(key, value); },
-  delete: function(key, shared){ return shared ? fsDelete(key) : Promise.resolve(); },
-  list:   function(prefix, shared){ return shared ? fsList(prefix) : Promise.resolve({keys:[]}); }
-};
-
-(function(){
-
-var COLORS = ['#E8836A','#7FA593','#6D93B8','#DDA83A','#9B85B0'];
-
-var RN = {};
-window.RN = RN;
-
-var state = {
-  subjects: [],
-  reflections: [],
-  view: 'home',
-  selectedSubjectId: null,
-  selectedUnitId: null,
-  openCardId: null,
-  session: null,
-  summaryDraft: null,
-  loadingApp: true,
-  studentName: '',
-  teacherPin: null,
-  teacherUnlocked: false,
-  teacherGateStep: null
-};
-
-function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
-function subjectById(id){ return state.subjects.find(function(s){return s.id===id;}); }
-function unitById(subj, id){ return subj ? subj.units.find(function(u){return u.id===id;}) : null; }
-
-async function saveSubjects(){
-  try{ await window.storage.set('subjects', JSON.stringify(state.subjects), true); }catch(e){}
-}
-async function loadSubjects(){
-  try{
-    var r = await window.storage.get('subjects', true);
-    if(r && r.value){ state.subjects = JSON.parse(r.value); return; }
-  }catch(e){}
-  state.subjects = [
-    {id:uid(), name:'国語', color:COLORS[0], units:[]},
-    {id:uid(), name:'算数', color:COLORS[1], units:[]},
-    {id:uid(), name:'理科', color:COLORS[2], units:[]},
-    {id:uid(), name:'社会', color:COLORS[3], units:[]},
-    {id:uid(), name:'図工', color:COLORS[4], units:[]}
-  ];
-  await saveSubjects();
-}
-async function loadReflections(){
-  state.reflections = [];
-  try{
-    var r = await window.storage.list('reflection:', true);
-    if(r && r.keys && r.keys.length){
-      for(var i=0;i<r.keys.length;i++){
-        try{
-          var item = await window.storage.get(r.keys[i], true);
-          if(item && item.value) state.reflections.push(JSON.parse(item.value));
-        }catch(e){}
-      }
-    }
-  }catch(e){}
-  state.reflections.sort(function(a,b){ return (b.createdAt||0) - (a.createdAt||0); });
-}
-async function saveReflection(obj){
-  await window.storage.set('reflection:'+obj.id, JSON.stringify(obj), true);
-}
-async function deleteReflection(id){
-  try{ await window.storage.delete('reflection:'+id, true); }catch(e){}
-}
-async function loadStudentName(){
-  try{
-    var r = await window.storage.get('student-name', false);
-    if(r && r.value) state.studentName = r.value;
-  }catch(e){}
-}
-async function saveStudentName(name){
-  try{ await window.storage.set('student-name', name, false); }catch(e){}
-}
-async function loadTeacherPin(){
-  try{
-    var r = await window.storage.get('teacher-pin', true);
-    state.teacherPin = (r && r.value) ? r.value : null;
-  }catch(e){ state.teacherPin = null; }
-}
-async function saveTeacherPin(pin){
-  await window.storage.set('teacher-pin', pin, true);
-  state.teacherPin = pin;
-}
-
-/* Gemini Dual Authentication Handler */
-async function callAI(messages, system){
-  var contents = [];
-  messages.forEach(function(m){
-    contents.push({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }]
-    });
-  });
-
-  var payload = JSON.stringify({
-    systemInstruction: { parts: [{ text: system }] },
-    contents: contents
-  });
-
-  var isOAuthToken = GEMINI_KEY.startsWith("AQ.");
-  var models = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"];
-  var lastErr = null;
-
-  for(var i=0; i<models.length; i++){
-    try {
-      var url = "https://generativelanguage.googleapis.com/v1beta/models/" + models[i] + ":generateContent";
-      var headers = {"Content-Type": "application/json"};
-      
-      if(isOAuthToken){
-        headers["Authorization"] = "Bearer " + GEMINI_KEY;
-      } else {
-        url += "?key=" + GEMINI_KEY;
-      }
-
-      var res = await fetch(url, {
-        method: "POST",
-        headers: headers,
-        body: payload
-      });
-
-      if(res.ok){
-        var data = await res.json();
-        if(data.candidates && data.candidates[0] && data.candidates[0].content){
-          return data.candidates[0].content.parts[0].text.trim();
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ふりかえりノート</title>
+    <!-- Puter.js (無料・APIキー不要のAIライブラリ) を読み込み -->
+    <script src="https://js.puter.com/v2/"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f7f9fc;
+            color: #333;
         }
-      }
-    } catch(e) {
-      lastErr = e;
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            resize: vertical;
+        }
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        #output {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f1f5f9;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+            min-height: 50px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>今日のふりかえりノート</h1>
+    <p>今日あった出来事や感じたことを自由に入力してください。</p>
+
+    <textarea id="userInput" placeholder="例：今日はプロジェクトの進捗が少し遅れてしまったけれど、チームメンバーとしっかり話し合えた。"></textarea>
+    
+    <button id="sendBtn" onclick="analyzeReflection()">AIフィードバックをもらう</button>
+
+    <div id="output">ここにAIからの返信・フィードバックが表示されます。</div>
+</div>
+
+<script>
+async function analyzeReflection() {
+    const input = document.getElementById('userInput').value.trim();
+    const outputDiv = document.getElementById('output');
+    const sendBtn = document.getElementById('sendBtn');
+
+    if (!input) {
+        alert('内容を入力してください。');
+        return;
     }
-  }
-  throw new Error(lastErr ? lastErr.message : 'API failed');
-}
 
-function chatSystemPrompt(subjName, unitName){
-  return "あなたは小学校の授業の最後に行う「ふりかえり」を手伝う、やさしい先生のようなAIです。相手は小学生です。"+
-  "今の教科は「"+subjName+"」、単元は「"+(unitName||'（単元未設定）')+"」です。"+
-  "\n・一度に質問は1つだけ。短く、やさしい言葉で聞いてください。"+
-  "\n・児童の返事には共感して褒めてから、次の質問につなげます。"+
-  "\n・1〜3文程度で答えてください。";
-}
+    // ボタンと表示を読み込み状態に変更
+    sendBtn.disabled = true;
+    sendBtn.innerText = 'AIが考え中...';
+    outputDiv.innerText = '分析中...少々お待ちください。';
 
-function summarySystemPrompt(subjName, unitName){
-  return "これまでの会話を踏まえて、今日の「"+subjName+"（"+(unitName||'単元未設定')+"）」の授業のふりかえりをまとめます。"+
-  "次のJSON形式のみを出力してください。前置きや解説は一切不要です。"+
-  "\n{\"manabi\":\"学んだこと\",\"wakatta\":\"わかったこと\",\"wakaranai\":\"わからなかったこと\",\"yokudekita\":\"よくできたこと\",\"muzukashikatta\":\"難しかったこと\",\"hitokoto\":\"一言まとめ\"}";
-}
+    try {
+        // AIに渡す指示文（プロンプト）を作成
+        const prompt = `
+あなたは優しく客観的なコーチです。ユーザーの「今日のふりかえり」を読んで、以下の要領で温かくフィードバックしてください。
 
-function esc(s){
-  return (s||'').replace(/[&<>"']/g, function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
-  });
-}
+【ユーザーの入力】
+${input}
 
-function fmtDate(ts){
-  var d = new Date(ts);
-  return d.toLocaleDateString('ja-JP', {year:'numeric', month:'long', day:'numeric', weekday:'short'});
-}
+【出力フォーマット】
+1. 労いと共感のコメント（短く）
+2. 良かった点・気づき（箇条書き）
+3. 明日へ向けた小さな一歩（アドバイス）
+`;
 
-function renderApp(){
-  document.getElementById('rn-datesub').textContent = fmtDate(Date.now());
-  var view = document.getElementById('rn-view');
-  if(state.loadingApp){
-    view.innerHTML = '<div class="rn-loading-block">よみこみちゅう…</div>';
-    return;
-  }
-  if(state.view==='home') view.innerHTML = renderHome();
-  else if(state.view==='chat') view.innerHTML = renderChat();
-  else if(state.view==='summary') view.innerHTML = renderSummary();
-  else if(state.view==='teachergate') view.innerHTML = renderTeacherGate();
-  else if(state.view==='teacher') view.innerHTML = renderTeacherArea();
-  afterRender();
-}
+        // Puter.jsのAI機能を呼び出し（APIキー不要）
+        const response = await puter.ai.chat(prompt);
 
-function afterRender(){
-  if(state.view==='chat'){
-    var log = document.getElementById('rn-log');
-    if(log) log.scrollTop = log.scrollHeight;
-    var ta = document.getElementById('rn-input');
-    if(ta){
-      ta.addEventListener('input', function(){
-        ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,120)+'px';
-      });
-      ta.addEventListener('keydown', function(e){
-        if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); RN.sendAnswer(); }
-      });
+        // 結果を出力画面に表示
+        outputDiv.innerText = response;
+
+    } catch (error) {
+        console.error('Error:', error);
+        outputDiv.innerText = 'エラーが発生しました。時間を置いて再度お試しください。';
+    } finally {
+        // ボタンを元に戻す
+        sendBtn.disabled = false;
+        sendBtn.innerText = 'AIフィードバックをもらう';
     }
-  }
 }
-
-function renderHome(){
-  var html = '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  html += '<div class="rn-section-title">なまえ</div>';
-  html += '<input type="text" class="rn-name-input" id="rn-name-input" placeholder="なまえを入力してね" value="'+esc(state.studentName)+'" onchange="RN.setStudentName(this.value)">';
-  html += '<div class="rn-name-hint">せんせいが確認できるように、なまえと内容は共有されます。</div>';
-  html += '<div class="rn-section-title">教科をえらぶ</div><div class="rn-tabrow">';
-  state.subjects.forEach(function(s){
-    var active = s.id===state.selectedSubjectId;
-    html += '<button class="rn-tab'+(active?' active':'')+'" style="background:'+s.color+'" onclick="RN.selectSubject(\''+s.id+'\')">'+esc(s.name)+'</button>';
-  });
-  html += '</div>';
-
-  var subj = subjectById(state.selectedSubjectId);
-  if(subj){
-    html += '<div class="rn-section-title">単元をえらぶ（省略可）</div><div class="rn-chiprow">';
-    subj.units.forEach(function(u){
-      var active = u.id===state.selectedUnitId;
-      html += '<button class="rn-chip'+(active?' active':'')+'" onclick="RN.selectUnit(\''+u.id+'\')">'+esc(u.name)+'</button>';
-    });
-    html += '</div>';
-  }
-
-  var canStart = subj && state.studentName.trim();
-  html += '<button class="rn-cta" '+(canStart?'':'disabled')+' onclick="RN.startSession()">きょうのふりかえりをはじめる</button></div>';
-
-  html += '<div class="rn-page"><div class="rn-section-title">これまでのふりかえり</div>';
-  var myName = state.studentName.trim();
-  if(!myName){
-    html += '<div class="rn-empty-state">なまえを入力すると、じぶんのきろくが表示されます。</div>';
-  } else {
-    var list = state.reflections.filter(function(r){ return (r.studentName||'').trim().toLowerCase() === myName.toLowerCase(); });
-    if(!list.length){
-      html += '<div class="rn-empty-state">まだふりかえりがありません。</div>';
-    } else {
-      list.forEach(function(r){ html += renderHistoryCard(r, {showStudent:false}); });
-    }
-  }
-  html += '</div>';
-  return html;
-}
-
-function renderHistoryCard(r, opts){
-  opts = opts || {};
-  var subj = subjectById(r.subjectId);
-  var color = subj ? subj.color : '#999';
-  var open = state.openCardId===r.id;
-  var html = '<div class="rn-card'+(open?' open':'')+'" onclick="RN.toggleCard(\''+r.id+'\')">';
-  html += '<div class="rn-card-top">';
-  if(opts.showStudent){ html += '<span class="rn-tag rn-tag-student">'+esc(r.studentName||'なまえ未入力')+'</span>'; }
-  html += '<span class="rn-tag" style="background:'+color+'">'+esc(r.subjectName)+(r.unitName?'・'+esc(r.unitName):'')+'</span><span class="rn-date">'+fmtDate(r.createdAt)+'</span></div>';
-  html += '<div class="rn-card-excerpt">'+esc(r.summary.hitokoto || r.summary.manabi || '（メモなし）')+'</div>';
-  html += '<div class="rn-card-detail">';
-  if(r.summary.manabi) html += '<div class="rn-field"><div class="rn-field-label">学んだこと</div><div class="rn-field-val">'+esc(r.summary.manabi)+'</div></div>';
-  if(r.summary.wakatta) html += '<div class="rn-field"><div class="rn-field-label">わかったこと</div><div class="rn-field-val">'+esc(r.summary.wakatta)+'</div></div>';
-  if(opts.deletable){
-    html += '<button class="rn-del-btn" onclick="event.stopPropagation();RN.removeReflection(\''+r.id+'\')">削除する</button>';
-  }
-  html += '</div></div>';
-  return html;
-}
-
-function repeat(s,n){ return new Array(n+1).join(s); }
-
-function renderChat(){
-  var sess = state.session;
-  var subj = subjectById(sess.subjectId);
-  var unit = unitById(subj, sess.unitId);
-  var color = subj ? subj.color : '#999';
-  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="RN.exitChat()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>'+esc(subj.name)+(unit?'・'+esc(unit.name):'')+'</b>のふりかえり</div></div>';
-  html += '<div class="rn-page" style="--subj-color:'+color+'"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  if(sess.error){ html += '<div class="rn-err">通信エラーが発生しました。<button class="rn-retry" onclick="RN.retry()">再試行</button></div>'; }
-  html += '<div class="rn-log" id="rn-log">';
-  sess.messages.forEach(function(m){
-    if(m.hidden) return;
-    if(m.role==='assistant'){
-      html += '<div class="rn-bubble-row"><div class="rn-ai-avatar">✎</div><div class="rn-bubble ai">'+esc(m.content)+'</div></div>';
-    } else {
-      html += '<div class="rn-bubble-row me"><div class="rn-bubble me">'+esc(m.content)+'</div></div>';
-    }
-  });
-  if(sess.loading){ html += '<div class="rn-bubble-row"><div class="rn-ai-avatar">✎</div><div class="rn-bubble ai"><div class="rn-typing"><span></span><span></span><span></span></div></div></div>'; }
-  html += '</div>';
-
-  html += '<div class="rn-inputrow"><textarea id="rn-input" class="rn-textarea" placeholder="ここに書いてね" '+(sess.loading?'disabled':'')+'></textarea><button class="rn-send" onclick="RN.sendAnswer()" '+(sess.loading?'disabled':'')+'>おくる</button></div>';
-  if(sess.messages.filter(function(m){return m.role==='assistant' && !m.hidden;}).length>=2 && !sess.loading){
-    html += '<div class="rn-finish-row"><button class="rn-finish-btn" onclick="RN.finishSession()">ふりかえりをまとめる</button></div>';
-  }
-  html += '</div>';
-  return html;
-}
-
-function renderSummary(){
-  var sess = state.session;
-  var subj = subjectById(sess.subjectId);
-  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="RN.backToChatFromSummary()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>'+esc(subj.name)+'</b>のふりかえり（まとめ）</div></div>';
-  html += '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  if(!state.summaryDraft){ return html + '<div class="rn-loading-block">まとめています…</div></div>'; }
-
-  var d = state.summaryDraft;
-  var fields = [['manabi','学んだこと'],['wakatta','わかったこと'],['wakaranai','わからなかったこと'],['yokudekita','よくできたこと'],['muzukashikatta','むずかしかったこと'],['hitokoto','きょうのひとこと']];
-  fields.forEach(function(f){
-    html += '<div class="rn-sum-field"><div class="rn-sum-label">'+f[1]+'</div><textarea class="rn-sum-textarea" data-field="'+f[0]+'" onchange="RN.updateDraft(this)">'+esc(d[f[0]]||'')+'</textarea></div>';
-  });
-  html += '<div class="rn-sum-actions"><button class="rn-secondary-btn" onclick="RN.backToChatFromSummary()">会話にもどる</button><button class="rn-save-btn" onclick="RN.saveReflection()">この内容で保存する</button></div></div>';
-  return html;
-}
-
-RN.setStudentName = function(val){ state.studentName = val.trim(); saveStudentName(state.studentName); renderApp(); };
-RN.selectSubject = function(id){ state.selectedSubjectId = id; state.selectedUnitId = null; renderApp(); };
-RN.selectUnit = function(id){ state.selectedUnitId = (state.selectedUnitId===id) ? null : id; renderApp(); };
-RN.toggleCard = function(id){ state.openCardId = (state.openCardId===id)?null:id; renderApp(); };
-RN.removeReflection = function(id){
-  if(!confirm('削除しますか？')) return;
-  deleteReflection(id).then(function(){ state.reflections = state.reflections.filter(function(r){return r.id!==id;}); renderApp(); });
-};
-
-RN.startSession = function(){
-  var subj = subjectById(state.selectedSubjectId);
-  if(!subj) return;
-  state.session = { subjectId: subj.id, unitId: state.selectedUnitId, studentName: state.studentName.trim(), messages: [], loading: true, error: null };
-  state.view = 'chat';
-  renderApp();
-  kickoff();
-};
-
-async function kickoff(){
-  var sess = state.session;
-  var subj = subjectById(sess.subjectId);
-  var unit = unitById(subj, sess.unitId);
-  sess.messages.push({role:'user', content:'こんにちは。今日の授業のふりかえりをはじめたいです。', hidden:true});
-  try{
-    var reply = await callAI(sess.messages, chatSystemPrompt(subj.name, unit?unit.name:null));
-    sess.messages.push({role:'assistant', content:reply});
-    sess.loading = false;
-  }catch(e){ sess.loading = false; sess.error = true; }
-  renderApp();
-}
-
-RN.sendAnswer = function(){
-  var ta = document.getElementById('rn-input');
-  if(!ta) return;
-  var text = ta.value.trim();
-  if(!text) return;
-  var sess = state.session;
-  sess.messages.push({role:'user', content:text});
-  sess.loading = true;
-  sess.error = null;
-  renderApp();
-  continueChat();
-};
-
-async function continueChat(){
-  var sess = state.session;
-  var subj = subjectById(sess.subjectId);
-  var unit = unitById(subj, sess.unitId);
-  try{
-    var reply = await callAI(sess.messages, chatSystemPrompt(subj.name, unit?unit.name:null));
-    sess.messages.push({role:'assistant', content:reply});
-    sess.loading = false;
-  }catch(e){ sess.loading = false; sess.error = true; }
-  renderApp();
-}
-
-RN.retry = function(){ state.session.error = null; state.session.loading = true; renderApp(); continueChat(); };
-RN.exitChat = function(){ if(confirm('ホームに戻りますか？')){ state.session = null; state.view = 'home'; renderApp(); } };
-
-RN.finishSession = function(){ state.view = 'summary'; state.summaryDraft = null; renderApp(); generateSummary(); };
-
-async function generateSummary(){
-  var sess = state.session;
-  var subj = subjectById(sess.subjectId);
-  var unit = unitById(subj, sess.unitId);
-  var msgs = sess.messages.concat([{role:'user', content:'（会話内容をまとめてください）'}]);
-  try{
-    var reply = await callAI(msgs, summarySystemPrompt(subj.name, unit?unit.name:null));
-    var cleaned = reply.replace(/```json/g,'').replace(/```/g,'').trim();
-    var parsed = JSON.parse(cleaned);
-    state.summaryDraft = parsed;
-  }catch(e){ state.summaryDraft = {manabi:'', wakatta:'', wakaranai:'', yokudekita:'', muzukashikatta:'', hitokoto:''}; }
-  renderApp();
-}
-
-RN.backToChatFromSummary = function(){ state.view = 'chat'; renderApp(); };
-RN.updateDraft = function(el){ state.summaryDraft[el.getAttribute('data-field')] = el.value; };
-
-RN.saveReflection = async function(){
-  var sess = state.session;
-  var subj = subjectById(sess.subjectId);
-  var unit = unitById(subj, sess.unitId);
-  var obj = {
-    id: uid(), studentName: sess.studentName || '', subjectId: subj.id, subjectName: subj.name,
-    unitId: unit?unit.id:null, unitName: unit?unit.name:null, createdAt: Date.now(), summary: state.summaryDraft
-  };
-  await saveReflection(obj);
-  state.reflections.unshift(obj);
-  state.session = null; state.view = 'home';
-  renderApp();
-  showToast('保存しました');
-};
-
-function showToast(msg){
-  var t = document.getElementById('rn-toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2200);
-}
-
-RN.openTeacherGate = function(){
-  if(state.teacherUnlocked){ state.view = 'teacher'; renderApp(); return; }
-  state.teacherGateStep = state.teacherPin ? 'enter' : 'setup';
-  state.view = 'teachergate'; renderApp();
-};
-
-function renderTeacherGate(){
-  var html = '<div class="rn-page"><div class="rn-gate-wrap"><div class="rn-gate-icon">🎓</div>';
-  if(state.teacherGateStep==='setup'){
-    html += '<div class="rn-gate-title">パスコード設定</div><div class="rn-gate-desc">先生ページ用の好きなパスワードを決めて入力してください</div><input type="password" class="rn-pin-input" id="tp-input1" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherSetup()">設定して進む</button>';
-  } else {
-    html += '<div class="rn-gate-title">せんせい用</div><div class="rn-gate-desc">設定したパスコードを入力してください</div><input type="password" class="rn-pin-input" id="tp-input" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherPin()">ひらく</button>';
-  }
-  html += '</div></div>';
-  return html;
-}
-
-RN.submitTeacherSetup = async function(){
-  var p1 = document.getElementById('tp-input1').value.trim();
-  if(!p1) return;
-  await saveTeacherPin(p1); state.teacherUnlocked = true; state.view = 'teacher'; renderApp();
-};
-RN.submitTeacherPin = function(){
-  var p = document.getElementById('tp-input').value.trim();
-  if(p === state.teacherPin){ state.teacherUnlocked = true; state.view = 'teacher'; renderApp(); }
-  else { alert('パスコードがちがいます'); }
-};
-
-function renderTeacherArea(){
-  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="state.view=\'home\';renderApp();"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>せんせい用管理画面（全員の記録）</b></div></div>';
-  html += '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  if(!state.reflections.length){
-    html += '<div class="rn-empty-state">提出されたふりかえりはまだありません。</div>';
-  } else {
-    state.reflections.forEach(function(r){ html += renderHistoryCard(r, {showStudent:true, deletable:true}); });
-  }
-  html += '</div>';
-  return html;
-}
-
-async function init(){
-  await loadSubjects();
-  await loadReflections();
-  await loadStudentName();
-  await loadTeacherPin();
-  state.loadingApp = false;
-  renderApp();
-}
-init();
-
-})();
 </script>
+
+</body>
+</html>
