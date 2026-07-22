@@ -21,8 +21,7 @@ html,body{margin:0;padding:0;}
 #reflect-root{
   font-family:'Zen Maru Gothic', 'Kosugi Maru', sans-serif;
   color:var(--ink);
-  background:
-    linear-gradient(var(--paper), var(--paper));
+  background: linear-gradient(var(--paper), var(--paper));
   min-height:100vh;
   padding:28px 16px 60px;
   position:relative;
@@ -31,11 +30,10 @@ html,body{margin:0;padding:0;}
 
 .rn-wrap{max-width:760px;margin:0 auto;}
 
-/* ---- header ---- */
 .rn-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;}
 .rn-title{font-family:'Kosugi Maru',sans-serif;font-size:26px;color:var(--ink);display:flex;align-items:center;gap:10px;}
 .rn-title-mark{
-  width:34px;height:34px;border-radius:9px;
+  width:34px;height:34px;border-radius:99px;
   background:linear-gradient(135deg, var(--coral), var(--mustard));
   display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;flex-shrink:0;
   box-shadow: var(--shadow-sm);
@@ -49,7 +47,6 @@ html,body{margin:0;padding:0;}
 .rn-gear:hover{background:#fff8ec;transform:rotate(20deg);}
 .rn-gear svg{width:18px;height:18px;color:var(--ink-soft);}
 
-/* ---- spiral notebook page ---- */
 .rn-page{
   position:relative;
   background:#fff;
@@ -71,7 +68,6 @@ html,body{margin:0;padding:0;}
   box-shadow: inset 0 2px 3px rgba(0,0,0,0.12);
 }
 
-/* ---- tabs (subject binder tabs) ---- */
 .rn-tabrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
 .rn-tab{
   border:none; cursor:pointer; padding:9px 16px 8px;
@@ -111,7 +107,6 @@ html,body{margin:0;padding:0;}
 
 .rn-section-title{font-family:'Kosugi Maru',sans-serif;font-size:15px;margin:0 0 12px;color:var(--ink);}
 
-/* ---- history ---- */
 .rn-filterrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .rn-filterchip{
   border:1px solid var(--paper-line); background:#fff; cursor:pointer;
@@ -141,7 +136,6 @@ html,body{margin:0;padding:0;}
   text-align:center; padding:36px 10px; color:var(--ink-soft); font-size:13.5px;
 }
 
-/* ---- chat ---- */
 .rn-chat-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
 .rn-back{
   border:none;background:#fff;border:1.5px solid var(--paper-line);width:34px;height:34px;border-radius:50%;
@@ -196,7 +190,6 @@ html,body{margin:0;padding:0;}
 .rn-err{background:#FBEAE7;color:#B24C3F;padding:10px 12px;border-radius:10px;font-size:13px;margin-bottom:10px;}
 .rn-retry{border:none;background:#B24C3F;color:#fff;border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer;margin-left:8px;}
 
-/* ---- summary ---- */
 .rn-sum-field{margin-bottom:16px;}
 .rn-sum-label{font-family:'Kosugi Maru',sans-serif;font-size:13.5px;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
 .rn-sum-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
@@ -216,20 +209,43 @@ html,body{margin:0;padding:0;}
 }
 .rn-loading-block{text-align:center;padding:50px 10px;color:var(--ink-soft);font-size:13.5px;}
 
-/* ---- settings modal ---- */
-.rn-modal-bg{
-  position:fixed;inset:0;background:rgba(46,53,72,0.35);display:flex;align-items:flex-end;
-  justify-content:center;z-index:50;
+.rn-name-input{
+  width:100%; border:1.5px solid var(--paper-line); border-radius:12px; padding:11px 13px;
+  font-size:15px; font-family:inherit; outline:none; margin-bottom:6px;
 }
-@media(min-width:640px){.rn-modal-bg{align-items:center;}}
-.rn-modal{
-  background:var(--paper);width:100%;max-width:520px;max-height:82vh;overflow-y:auto;
-  border-radius:20px 20px 0 0;padding:22px 20px 28px;box-shadow:0 -8px 30px rgba(0,0,0,0.2);
+.rn-name-input:focus{border-color:var(--sky);}
+.rn-name-hint{font-size:11.5px;color:var(--ink-soft);margin-bottom:18px;}
+.rn-tag-student{background:var(--ink);margin-right:6px;}
+
+.rn-gate-wrap{max-width:360px;margin:40px auto 0;text-align:center;}
+.rn-gate-icon{
+  width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
+  background:linear-gradient(135deg,var(--sky),var(--lavender));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;
 }
-@media(min-width:640px){.rn-modal{border-radius:20px;}}
-.rn-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.rn-modal-title{font-family:'Kosugi Maru',sans-serif;font-size:17px;}
-.rn-close{border:none;background:none;font-size:20px;cursor:pointer;color:var(--ink-soft);line-height:1;padding:4px;}
+.rn-gate-title{font-family:'Kosugi Maru',sans-serif;font-size:18px;margin-bottom:8px;}
+.rn-gate-desc{font-size:13px;color:var(--ink-soft);margin-bottom:20px;line-height:1.7;}
+.rn-pin-input{
+  width:100%;border:1.5px solid var(--paper-line);border-radius:12px;padding:13px;
+  font-size:18px;text-align:center;letter-spacing:4px;font-family:inherit;outline:none;margin-bottom:10px;
+}
+.rn-pin-input:focus{border-color:var(--sky);}
+.rn-gate-err{color:#B24C3F;font-size:12.5px;margin-bottom:10px;}
+.rn-gate-btnrow{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+
+.rn-teach-tabs{display:flex;gap:8px;margin-bottom:18px;}
+.rn-teach-tab{
+  flex:1; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer;
+  padding:10px; border-radius:12px; font-family:'Kosugi Maru',sans-serif; font-size:13.5px; color:var(--ink-soft);
+}
+.rn-teach-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.rn-teach-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.rn-select{
+  border:1.5px solid var(--paper-line); background:#fff; border-radius:999px; padding:7px 12px;
+  font-size:13px; font-family:inherit; color:var(--ink); outline:none;
+}
+.rn-teach-count{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
+
 .rn-subj-block{background:#fff;border:1px solid #EFE8D6;border-radius:12px;padding:12px 14px;margin-bottom:10px;}
 .rn-subj-block-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;}
 .rn-subj-name{display:flex;align-items:center;gap:8px;font-family:'Kosugi Maru',sans-serif;font-size:14.5px;}
@@ -251,45 +267,6 @@ html,body{margin:0;padding:0;}
 .rn-trash-btn{border:none;background:none;color:var(--ink-soft);cursor:pointer;padding:4px;}
 .rn-trash-btn:hover{color:#B24C3F;}
 .rn-trash-btn svg{width:15px;height:15px;}
-/* ---- name field ---- */
-.rn-name-input{
-  width:100%; border:1.5px solid var(--paper-line); border-radius:12px; padding:11px 13px;
-  font-size:15px; font-family:inherit; outline:none; margin-bottom:6px;
-}
-.rn-name-input:focus{border-color:var(--sky);}
-.rn-name-hint{font-size:11.5px;color:var(--ink-soft);margin-bottom:18px;}
-.rn-tag-student{background:var(--ink);margin-right:6px;}
-
-/* ---- teacher gate ---- */
-.rn-gate-wrap{max-width:360px;margin:40px auto 0;text-align:center;}
-.rn-gate-icon{
-  width:56px;height:56px;border-radius:16px;margin:0 auto 16px;
-  background:linear-gradient(135deg,var(--sky),var(--lavender));
-  display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;
-}
-.rn-gate-title{font-family:'Kosugi Maru',sans-serif;font-size:18px;margin-bottom:8px;}
-.rn-gate-desc{font-size:13px;color:var(--ink-soft);margin-bottom:20px;line-height:1.7;}
-.rn-pin-input{
-  width:100%;border:1.5px solid var(--paper-line);border-radius:12px;padding:13px;
-  font-size:18px;text-align:center;letter-spacing:4px;font-family:inherit;outline:none;margin-bottom:10px;
-}
-.rn-pin-input:focus{border-color:var(--sky);}
-.rn-gate-err{color:#B24C3F;font-size:12.5px;margin-bottom:10px;}
-.rn-gate-btnrow{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
-
-/* ---- teacher area ---- */
-.rn-teach-tabs{display:flex;gap:8px;margin-bottom:18px;}
-.rn-teach-tab{
-  flex:1; border:1.5px solid var(--paper-line); background:#fff; cursor:pointer;
-  padding:10px; border-radius:12px; font-family:'Kosugi Maru',sans-serif; font-size:13.5px; color:var(--ink-soft);
-}
-.rn-teach-tab.active{background:var(--ink);color:#fff;border-color:var(--ink);}
-.rn-teach-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
-.rn-select{
-  border:1.5px solid var(--paper-line); background:#fff; border-radius:999px; padding:7px 12px;
-  font-size:13px; font-family:inherit; color:var(--ink); outline:none;
-}
-.rn-teach-count{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;}
 
 .rn-toast{
   position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
@@ -313,37 +290,30 @@ html,body{margin:0;padding:0;}
     <div id="rn-view"></div>
   </div>
 </div>
-<div id="rn-modal-slot"></div>
 <div id="rn-toast" class="rn-toast"></div>
 
 <script type="module">
-/* =====================================================================
-   スタンドアロン版セットアップ（Gemini / Firebase / Google Apps Script）
-   ここから下の「設定してください」の3か所だけ埋めれば動きます。
-   ===================================================================== */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
 import {
   getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
-// ---- ① Firebaseプロジェクトの設定値をここに貼ってください ----
+// Firebaseの設定情報
 const FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCQ61dB6f0ccPisuFjeOdWTLNFrhitPIdk",
+  authDomain: "reflection-notebook-12bd6.firebaseapp.com",
+  projectId: "reflection-notebook-12bd6",
+  storageBucket: "reflection-notebook-12bd6.firebasestorage.app",
+  messagingSenderId: "908464134365",
+  appId: "1:908464134365:web:68edba9d71643d5bb1a334"
 };
 
-// ---- ② Google Apps Scriptをウェブアプリとしてデプロイして発行されたURLをここに貼ってください ----
-//      （gemini-proxy.gs を参照。末尾が /exec のURLです）
-const GEMINI_PROXY_URL = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
+// Gemini APIキー
+const GEMINI_API_KEY = "AQ.Ab8RN6LoPDWa2Rxpi53Nl4J4dIQYZv7rYsnDPLhePNIKMiZXZw";
 
 const firebaseApp = initializeApp(FIREBASE_CONFIG);
 const db = getFirestore(firebaseApp);
 
-/* ---- Firestoreベースの共有ストレージ（教科・記録・先生パスコードなど） ---- */
 async function fsGet(key){
   try{
     const snap = await getDoc(doc(db, 'shared', key));
@@ -372,10 +342,6 @@ async function fsList(prefix){
   }catch(e){ console.error('firestore list failed', prefix, e); return null; }
 }
 
-/* ---- localStorageベースの個人用ストレージ（この端末だけの下書き保存） ----
-   Claudeアーティファクトの「localStorage禁止」ルールは、Claude.ai上で動く
-   ときだけの制約です。ここは独立したサイトとして動くので通常のWeb同様
-   localStorageを使って問題ありません。 */
 function lsGet(key){
   try{
     const v = localStorage.getItem('rn_'+key);
@@ -388,31 +354,12 @@ function lsSet(key, value){
     return Promise.resolve({ key: key, value: value, shared: false });
   }catch(e){ return Promise.resolve(null); }
 }
-function lsDelete(key){
-  try{
-    localStorage.removeItem('rn_'+key);
-    return Promise.resolve({ key: key, deleted: true, shared: false });
-  }catch(e){ return Promise.resolve(null); }
-}
-function lsList(prefix){
-  var keys = [];
-  for(var i=0;i<localStorage.length;i++){
-    var k = localStorage.key(i);
-    if(k && k.indexOf('rn_')===0){
-      var stripped = k.slice(3);
-      if(!prefix || stripped.indexOf(prefix)===0) keys.push(stripped);
-    }
-  }
-  return Promise.resolve({ keys: keys, prefix: prefix, shared: false });
-}
 
-// window.storage は元のClaudeアーティファクト版と同じインターフェースのまま。
-// 呼び出し側（saveSubjects/loadReflections等）は一切変更していません。
 window.storage = {
   get:    function(key, shared){ return shared ? fsGet(key)    : lsGet(key); },
   set:    function(key, value, shared){ return shared ? fsSet(key, value) : lsSet(key, value); },
-  delete: function(key, shared){ return shared ? fsDelete(key) : lsDelete(key); },
-  list:   function(prefix, shared){ return shared ? fsList(prefix) : lsList(prefix); }
+  delete: function(key, shared){ return shared ? fsDelete(key) : Promise.resolve(); },
+  list:   function(prefix, shared){ return shared ? fsList(prefix) : Promise.resolve({keys:[]}); }
 };
 
 (function(){
@@ -430,38 +377,31 @@ var state = {
   selectedUnitId: null,
   historyFilter: 'all',
   openCardId: null,
-  session: null, // {subjectId,unitId,messages:[],finished:false,loading:false,error:null,phase:'chat'|'summary'}
+  session: null,
   summaryDraft: null,
   loadingApp: true,
   studentName: '',
-  teacherPin: null,        // pin string stored in shared storage, null = not yet loaded/checked
-  teacherPinLoaded: false,
-  teacherUnlocked: false,  // unlocked for this session only
-  teacherGateStep: null,   // 'setup' | 'enter' | null
+  teacherPin: null,
+  teacherUnlocked: false,
+  teacherGateStep: null,
   teacherGateError: null,
-  teacherTab: 'records',   // 'records' | 'settings'
+  teacherTab: 'records',
   teacherStudentFilter: 'all',
   teacherSubjectFilter: 'all'
 };
 
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
-
 function subjectById(id){ return state.subjects.find(function(s){return s.id===id;}); }
 function unitById(subj, id){ return subj ? subj.units.find(function(u){return u.id===id;}) : null; }
 
-/* ---------------- storage ----------------
-   subjects / reflections / teacher-pin are SHARED so the teacher can see
-   everyone's records and manage curriculum in one place.
-   student-name is personal (just a convenience prefill on this device). */
 async function saveSubjects(){
-  try{ await window.storage.set('subjects', JSON.stringify(state.subjects), true); }
-  catch(e){ console.error('save subjects failed', e); }
+  try{ await window.storage.set('subjects', JSON.stringify(state.subjects), true); }catch(e){}
 }
 async function loadSubjects(){
   try{
     var r = await window.storage.get('subjects', true);
     if(r && r.value){ state.subjects = JSON.parse(r.value); return; }
-  }catch(e){ /* not found */ }
+  }catch(e){}
   state.subjects = [
     {id:uid(), name:'国語', color:COLORS[0], units:[]},
     {id:uid(), name:'算数', color:COLORS[1], units:[]},
@@ -496,7 +436,7 @@ async function loadStudentName(){
   try{
     var r = await window.storage.get('student-name', false);
     if(r && r.value) state.studentName = r.value;
-  }catch(e){ /* not set yet */ }
+  }catch(e){}
 }
 async function saveStudentName(name){
   try{ await window.storage.set('student-name', name, false); }catch(e){}
@@ -506,53 +446,56 @@ async function loadTeacherPin(){
     var r = await window.storage.get('teacher-pin', true);
     state.teacherPin = (r && r.value) ? r.value : null;
   }catch(e){ state.teacherPin = null; }
-  state.teacherPinLoaded = true;
 }
 async function saveTeacherPin(pin){
   await window.storage.set('teacher-pin', pin, true);
   state.teacherPin = pin;
 }
 
-/* ---------------- AI呼び出し（Google Apps Script経由でGemini APIを呼ぶ） ----------------
-   呼び出し側（kickoff / continueChat / generateSummary）は元のcallClaudeと
-   同じ引数・返り値の関数を呼ぶだけなので、そちら側のコードは変更していません。 */
+/* Gemini Direct API Call */
 async function callAI(messages, system){
-  var res = await fetch(GEMINI_PROXY_URL, {
-    method: "POST",
-    // text/plain にするとブラウザがCORSプリフライト(OPTIONS)を送らず、
-    // Apps Script側の追加設定なしでそのまま届く（Apps Scriptの定番の回避策）
-    headers: {"Content-Type": "text/plain;charset=utf-8"},
-    body: JSON.stringify({ system: system, messages: messages })
+  var contents = [];
+  messages.forEach(function(m){
+    contents.push({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    });
   });
+
+  var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API_KEY;
+  
+  var res = await fetch(url, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: system }] },
+      contents: contents
+    })
+  });
+
   if(!res.ok){ throw new Error('API error '+res.status); }
   var data = await res.json();
-  if(data.error){ throw new Error(data.error); }
-  return (data.text||'').trim();
+  if(!data.candidates || !data.candidates[0] || !data.candidates[0].content){
+    throw new Error('Invalid AI response');
+  }
+  return data.candidates[0].content.parts[0].text.trim();
 }
 
 function chatSystemPrompt(subjName, unitName){
   return "あなたは小学校の授業の最後に行う「ふりかえり」を手伝う、やさしい先生のようなAIです。相手は児童です。"+
   "今の教科は「"+subjName+"」、単元は「"+(unitName||'（単元未設定）')+"」です。"+
-  "\n\n必ず守るルール:"+
-  "\n・一度に質問は1つだけ。短く、やさしい言葉で、児童が答えやすい聞き方にする。"+
-  "\n・会話の流れの目安: (1)今日の授業でどんなことを学んだか (2)わかったこと・わからなかったこと (3)よくできたこと・難しかったこと、の順で聞いていく。"+
-  "\n・児童の返事には、まず一言短く共感したり褒めたりしてから、次の質問に自然につなげる。"+
-  "\n・返事が短かったり漠然としていたら、やさしく具体的に聞き返してよい。ただし深追いしすぎない。"+
-  "\n・全体で4〜6回のやりとりを目安にする。ある程度話せたら『そろそろまとめてみようか』などと声をかけてよい。"+
-  "\n・漢字は児童向けに読みやすい範囲で使い、難しい言葉は避ける。絵文字は使わない。"+
-  "\n・出力はAIの発言の本文のみ。前置き、箇条書き、括弧書きの説明は不要。1〜3文程度で。";
+  "\n\nルール:"+
+  "\n・一度に質問は1つだけ。短く、やさしい言葉で聞いてください。"+
+  "\n・児童の返事には共感して褒めてから、次の質問につなげます。"+
+  "\n・文字数は1〜3文程度。絵文字は使わないでください。";
 }
 
 function summarySystemPrompt(subjName, unitName){
-  return "これまでの会話全体を踏まえて、今日の「"+subjName+"（"+(unitName||'単元未設定')+"）」の授業のふりかえりをまとめます。"+
-  "次のJSON形式のみを出力してください。前置き・説明・コードブロック記号（```）は一切つけないでください。"+
-  "\n{\"manabi\":\"学んだこと\",\"wakatta\":\"わかったこと\",\"wakaranai\":\"わからなかったこと・もっと知りたいこと\",\"yokudekita\":\"よくできたこと\",\"muzukashikatta\":\"難しかったこと・むずかしかったこと\",\"hitokoto\":\"今日のふりかえり全体を表す一言まとめ\"}"+
-  "\n・すべて児童の発言内容にもとづき、児童の言葉づかいを活かしながら自然な文章にする（1〜2文程度）。"+
-  "\n・会話の中で触れられなかった項目は空文字 \"\" にする。"+
-  "\n・hitokotoは会話全体を温かくまとめた一言（20〜40文字程度）にする。";
+  return "これまでの会話を踏まえて、今日の「"+subjName+"（"+(unitName||'単元未設定')+"）」の授業のふりかえりをまとめます。"+
+  "次のJSON形式のみを出力してください。前置きやコードブロック（```）は不要です。"+
+  "\n{\"manabi\":\"学んだこと\",\"wakatta\":\"わかったこと\",\"wakaranai\":\"わからなかったこと\",\"yokudekita\":\"よくできたこと\",\"muzukashikatta\":\"難しかったこと\",\"hitokoto\":\"一言まとめ\"}";
 }
 
-/* ---------------- rendering: home ---------------- */
 function esc(s){
   return (s||'').replace(/[&<>"']/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
@@ -596,68 +539,45 @@ function afterRender(){
 }
 
 function renderHome(){
-  var html = '';
-  html += '<div class="rn-page">';
-  html += '<div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
+  var html = '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
   html += '<div class="rn-section-title">なまえ</div>';
   html += '<input type="text" class="rn-name-input" id="rn-name-input" placeholder="なまえを入力してね" value="'+esc(state.studentName)+'" onchange="RN.setStudentName(this.value)">';
   html += '<div class="rn-name-hint">せんせいが確認できるように、なまえと内容は共有されます。</div>';
-  html += '<div class="rn-section-title">教科をえらぶ</div>';
-  html += '<div class="rn-tabrow">';
+  html += '<div class="rn-section-title">教科をえらぶ</div><div class="rn-tabrow">';
   state.subjects.forEach(function(s){
     var active = s.id===state.selectedSubjectId;
     html += '<button class="rn-tab'+(active?' active':'')+'" style="background:'+s.color+'" onclick="RN.selectSubject(\''+s.id+'\')">'+esc(s.name)+'</button>';
   });
-  if(!state.subjects.length){ html += '<div class="rn-empty-hint">先生に教科を追加してもらってね</div>'; }
   html += '</div>';
 
   var subj = subjectById(state.selectedSubjectId);
   if(subj){
-    html += '<div class="rn-section-title">単元をえらぶ（省略もできます）</div>';
-    html += '<div class="rn-chiprow">';
+    html += '<div class="rn-section-title">単元をえらぶ（省略可）</div><div class="rn-chiprow">';
     subj.units.forEach(function(u){
       var active = u.id===state.selectedUnitId;
       html += '<button class="rn-chip'+(active?' active':'')+'" onclick="RN.selectUnit(\''+u.id+'\')">'+esc(u.name)+'</button>';
     });
-    if(!subj.units.length){ html += '<div class="rn-empty-hint">この教科の単元はまだありません</div>'; }
     html += '</div>';
-    html += '<div class="rn-selected-line">きょうの授業: <b>'+esc(subj.name)+(state.selectedUnitId&&unitById(subj,state.selectedUnitId)?' ／ '+esc(unitById(subj,state.selectedUnitId).name):'')+'</b></div>';
   }
 
   var canStart = subj && state.studentName.trim();
-  html += '<button class="rn-cta" '+(canStart?'':'disabled')+' onclick="RN.startSession()">きょうのふりかえりをはじめる</button>';
-  if(subj && !state.studentName.trim()){ html += '<div class="rn-empty-hint" style="margin-top:8px;">▲ なまえを入力するとはじめられます</div>'; }
-  html += '</div>';
+  html += '<button class="rn-cta" '+(canStart?'':'disabled')+' onclick="RN.startSession()">きょうのふりかえりをはじめる</button></div>';
 
-  // history (this student's own records only)
-  html += '<div class="rn-page">';
-  html += '<div class="rn-section-title">これまでのふりかえり</div>';
+  html += '<div class="rn-page"><div class="rn-section-title">これまでのふりかえり</div>';
   var myName = state.studentName.trim();
   if(!myName){
-    html += '<div class="rn-empty-state">なまえを入力すると、じぶんのきろくがここに表示されます。</div>';
+    html += '<div class="rn-empty-state">なまえを入力すると、じぶんのきろくが表示されます。</div>';
   } else {
-    if(state.subjects.length){
-      html += '<div class="rn-filterrow">';
-      html += '<button class="rn-filterchip'+(state.historyFilter==='all'?' active':'')+'" onclick="RN.setFilter(\'all\')">すべて</button>';
-      state.subjects.forEach(function(s){
-        html += '<button class="rn-filterchip'+(state.historyFilter===s.id?' active':'')+'" onclick="RN.setFilter(\''+s.id+'\')">'+esc(s.name)+'</button>';
-      });
-      html += '</div>';
-    }
-    var list = state.reflections.filter(function(r){
-      return sameName(r.studentName, myName) && (state.historyFilter==='all' || r.subjectId===state.historyFilter);
-    });
+    var list = state.reflections.filter(function(r){ return (r.studentName||'').trim().toLowerCase() === myName.toLowerCase(); });
     if(!list.length){
-      html += '<div class="rn-empty-state">まだふりかえりがありません。<br>上のボタンから、きょうのふりかえりをはじめてみよう。</div>';
+      html += '<div class="rn-empty-state">まだふりかえりがありません。</div>';
     } else {
-      list.forEach(function(r){ html += renderHistoryCard(r, {showStudent:false, deletable:false}); });
+      list.forEach(function(r){ html += renderHistoryCard(r, {showStudent:false}); });
     }
   }
   html += '</div>';
   return html;
 }
-
-function sameName(a,b){ return (a||'').trim().toLowerCase() === (b||'').trim().toLowerCase(); }
 
 function renderHistoryCard(r, opts){
   opts = opts || {};
@@ -668,42 +588,27 @@ function renderHistoryCard(r, opts){
   html += '<div class="rn-card-top">';
   if(opts.showStudent){ html += '<span class="rn-tag rn-tag-student">'+esc(r.studentName||'なまえ未入力')+'</span>'; }
   html += '<span class="rn-tag" style="background:'+color+'">'+esc(r.subjectName)+(r.unitName?'・'+esc(r.unitName):'')+'</span><span class="rn-date">'+fmtDate(r.createdAt)+'</span></div>';
-  html += '<div class="rn-card-excerpt">'+esc(r.summary.hitokoto || r.summary.manabi || '（ひとことメモなし）')+'</div>';
+  html += '<div class="rn-card-excerpt">'+esc(r.summary.hitokoto || r.summary.manabi || '（メモなし）')+'</div>';
   html += '<div class="rn-card-detail">';
-  html += summaryFieldRow('学んだこと', r.summary.manabi);
-  html += summaryFieldRow('わかったこと', r.summary.wakatta);
-  html += summaryFieldRow('わからなかったこと', r.summary.wakaranai);
-  html += summaryFieldRow('よくできたこと', r.summary.yokudekita);
-  html += summaryFieldRow('むずかしかったこと', r.summary.muzukashikatta);
+  if(r.summary.manabi) html += '<div class="rn-field"><div class="rn-field-label">学んだこと</div><div class="rn-field-val">'+esc(r.summary.manabi)+'</div></div>';
+  if(r.summary.wakatta) html += '<div class="rn-field"><div class="rn-field-label">わかったこと</div><div class="rn-field-val">'+esc(r.summary.wakatta)+'</div></div>';
   if(opts.deletable){
-    html += '<button class="rn-del-btn" onclick="event.stopPropagation();RN.removeReflection(\''+r.id+'\')">この記録を削除する</button>';
+    html += '<button class="rn-del-btn" onclick="event.stopPropagation();RN.removeReflection(\''+r.id+'\')">削除する</button>';
   }
   html += '</div></div>';
   return html;
 }
-function summaryFieldRow(label, val){
-  if(!val) return '';
-  return '<div class="rn-field"><div class="rn-field-label">'+label+'</div><div class="rn-field-val">'+esc(val)+'</div></div>';
-}
 
 function repeat(s,n){ return new Array(n+1).join(s); }
 
-/* ---------------- rendering: chat ---------------- */
 function renderChat(){
   var sess = state.session;
   var subj = subjectById(sess.subjectId);
   var unit = unitById(subj, sess.unitId);
   var color = subj ? subj.color : '#999';
-  var html = '<div class="rn-chat-header">';
-  html += '<button class="rn-back" onclick="RN.exitChat()" aria-label="もどる"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>';
-  html += '<div class="rn-chat-meta"><b>'+esc(subj.name)+(unit?'・'+esc(unit.name):'')+'</b>のふりかえり</div>';
-  html += '</div>';
-
-  html += '<div class="rn-page" style="--subj-color:'+color+'">';
-  html += '<div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  if(sess.error){
-    html += '<div class="rn-err">うまく通信できませんでした。<button class="rn-retry" onclick="RN.retry()">もう一度ためす</button></div>';
-  }
+  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="RN.exitChat()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>'+esc(subj.name)+(unit?'・'+esc(unit.name):'')+'</b>のふりかえり</div></div>';
+  html += '<div class="rn-page" style="--subj-color:'+color+'"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
+  if(sess.error){ html += '<div class="rn-err">通信エラーが発生しました。<button class="rn-retry" onclick="RN.retry()">再試行</button></div>'; }
   html += '<div class="rn-log" id="rn-log">';
   sess.messages.forEach(function(m){
     if(m.hidden) return;
@@ -713,108 +618,46 @@ function renderChat(){
       html += '<div class="rn-bubble-row me"><div class="rn-bubble me">'+esc(m.content)+'</div></div>';
     }
   });
-  if(sess.loading){
-    html += '<div class="rn-bubble-row"><div class="rn-ai-avatar">✎</div><div class="rn-bubble ai"><div class="rn-typing"><span></span><span></span><span></span></div></div></div>';
-  }
+  if(sess.loading){ html += '<div class="rn-bubble-row"><div class="rn-ai-avatar">✎</div><div class="rn-bubble ai"><div class="rn-typing"><span></span><span></span><span></span></div></div></div>'; }
   html += '</div>';
 
-  var assistantTurns = sess.messages.filter(function(m){return m.role==='assistant' && !m.hidden;}).length;
-  html += '<div class="rn-inputrow">';
-  html += '<textarea id="rn-input" class="rn-textarea" placeholder="ここに書いてね" '+(sess.loading?'disabled':'')+'></textarea>';
-  html += '<button class="rn-send" id="rn-send-btn" onclick="RN.sendAnswer()" '+(sess.loading?'disabled':'')+'>おくる</button>';
-  html += '</div>';
-  if(assistantTurns>=3 && !sess.loading){
+  html += '<div class="rn-inputrow"><textarea id="rn-input" class="rn-textarea" placeholder="ここに書いてね" '+(sess.loading?'disabled':'')+'></textarea><button class="rn-send" onclick="RN.sendAnswer()" '+(sess.loading?'disabled':'')+'>おくる</button></div>';
+  if(sess.messages.filter(function(m){return m.role==='assistant' && !m.hidden;}).length>=3 && !sess.loading){
     html += '<div class="rn-finish-row"><button class="rn-finish-btn" onclick="RN.finishSession()">ふりかえりをまとめる</button></div>';
   }
   html += '</div>';
   return html;
 }
 
-/* ---------------- rendering: summary ---------------- */
 function renderSummary(){
   var sess = state.session;
   var subj = subjectById(sess.subjectId);
-  var unit = unitById(subj, sess.unitId);
-  var color = subj ? subj.color : '#999';
-  var html = '<div class="rn-chat-header">';
-  html += '<button class="rn-back" onclick="RN.backToChatFromSummary()" aria-label="もどる"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>';
-  html += '<div class="rn-chat-meta"><b>'+esc(subj.name)+(unit?'・'+esc(unit.name):'')+'</b>のふりかえり（まとめ）</div>';
-  html += '</div>';
-  html += '<div class="rn-page">';
-  html += '<div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-
-  if(!state.summaryDraft){
-    html += '<div class="rn-loading-block">ふりかえりをまとめています…</div>';
-    html += '</div>';
-    return html;
-  }
-  if(sess.error){
-    html += '<div class="rn-err">うまくまとめられませんでした。<button class="rn-retry" onclick="RN.retrySummary()">もう一度ためす</button></div>';
-  }
+  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="RN.backToChatFromSummary()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>'+esc(subj.name)+'</b>のふりかえり（まとめ）</div></div>';
+  html += '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
+  if(!state.summaryDraft){ return html + '<div class="rn-loading-block">まとめています…</div></div>'; }
 
   var d = state.summaryDraft;
-  var fields = [
-    ['manabi','学んだこと', color],
-    ['wakatta','わかったこと', '#7FA593'],
-    ['wakaranai','わからなかったこと', '#6D93B8'],
-    ['yokudekita','よくできたこと', '#DDA83A'],
-    ['muzukashikatta','むずかしかったこと', '#9B85B0']
-  ];
+  var fields = [['manabi','学んだこと'],['wakatta','わかったこと'],['wakaranai','わからなかったこと'],['yokudekita','よくできたこと'],['muzukashikatta','むずかしかったこと'],['hitokoto','きょうのひとこと']];
   fields.forEach(function(f){
-    html += '<div class="rn-sum-field">';
-    html += '<div class="rn-sum-label"><span class="rn-sum-dot" style="background:'+f[2]+'"></span>'+f[1]+'</div>';
-    html += '<textarea class="rn-sum-textarea" data-field="'+f[0]+'" onchange="RN.updateDraft(this)">'+esc(d[f[0]]||'')+'</textarea>';
-    html += '</div>';
+    html += '<div class="rn-sum-field"><div class="rn-sum-label">'+f[1]+'</div><textarea class="rn-sum-textarea" data-field="'+f[0]+'" onchange="RN.updateDraft(this)">'+esc(d[f[0]]||'')+'</textarea></div>';
   });
-  html += '<div class="rn-sum-field">';
-  html += '<div class="rn-sum-label"><span class="rn-sum-dot" style="background:'+color+'"></span>今日のひとこと</div>';
-  html += '<textarea class="rn-sum-textarea" data-field="hitokoto" onchange="RN.updateDraft(this)">'+esc(d.hitokoto||'')+'</textarea>';
-  html += '</div>';
-
-  html += '<div class="rn-sum-actions">';
-  html += '<button class="rn-secondary-btn" onclick="RN.backToChatFromSummary()">会話にもどる</button>';
-  html += '<button class="rn-save-btn" onclick="RN.saveReflection()">この内容で保存する</button>';
-  html += '</div>';
-  html += '</div>';
+  html += '<div class="rn-sum-actions"><button class="rn-secondary-btn" onclick="RN.backToChatFromSummary()">会話にもどる</button><button class="rn-save-btn" onclick="RN.saveReflection()">この内容で保存する</button></div></div>';
   return html;
 }
 
-/* ---------------- actions ---------------- */
-RN.setStudentName = function(val){
-  state.studentName = val.trim();
-  saveStudentName(state.studentName);
-  renderApp();
-};
-RN.selectSubject = function(id){
-  state.selectedSubjectId = id;
-  state.selectedUnitId = null;
-  renderApp();
-};
-RN.selectUnit = function(id){
-  state.selectedUnitId = (state.selectedUnitId===id) ? null : id;
-  renderApp();
-};
-RN.setFilter = function(id){ state.historyFilter=id; renderApp(); };
+RN.setStudentName = function(val){ state.studentName = val.trim(); saveStudentName(state.studentName); renderApp(); };
+RN.selectSubject = function(id){ state.selectedSubjectId = id; state.selectedUnitId = null; renderApp(); };
+RN.selectUnit = function(id){ state.selectedUnitId = (state.selectedUnitId===id) ? null : id; renderApp(); };
 RN.toggleCard = function(id){ state.openCardId = (state.openCardId===id)?null:id; renderApp(); };
 RN.removeReflection = function(id){
-  if(!confirm('この記録を削除しますか？')) return;
-  deleteReflection(id).then(function(){
-    state.reflections = state.reflections.filter(function(r){return r.id!==id;});
-    renderApp();
-  });
+  if(!confirm('削除しますか？')) return;
+  deleteReflection(id).then(function(){ state.reflections = state.reflections.filter(function(r){return r.id!==id;}); renderApp(); });
 };
 
 RN.startSession = function(){
   var subj = subjectById(state.selectedSubjectId);
   if(!subj) return;
-  state.session = {
-    subjectId: subj.id,
-    unitId: state.selectedUnitId,
-    studentName: state.studentName.trim(),
-    messages: [],
-    loading: true,
-    error: null
-  };
+  state.session = { subjectId: subj.id, unitId: state.selectedUnitId, studentName: state.studentName.trim(), messages: [], loading: true, error: null };
   state.view = 'chat';
   renderApp();
   kickoff();
@@ -824,18 +667,14 @@ async function kickoff(){
   var sess = state.session;
   var subj = subjectById(sess.subjectId);
   var unit = unitById(subj, sess.unitId);
-  sess.messages.push({role:'user', content:'（ふりかえりを始めます。挨拶して、最初の質問をしてください。）', hidden:true});
+  sess.messages.push({role:'user', content:'（ふりかえりを始めます。挨拶して質問してください。）', hidden:true});
   try{
-    var reply = await callAI(sess.messages.map(stripHidden), chatSystemPrompt(subj.name, unit?unit.name:null));
+    var reply = await callAI(sess.messages, chatSystemPrompt(subj.name, unit?unit.name:null));
     sess.messages.push({role:'assistant', content:reply});
     sess.loading = false;
-  }catch(e){
-    sess.loading = false;
-    sess.error = true;
-  }
+  }catch(e){ sess.loading = false; sess.error = true; }
   renderApp();
 }
-function stripHidden(m){ return {role:m.role, content:m.content}; }
 
 RN.sendAnswer = function(){
   var ta = document.getElementById('rn-input');
@@ -855,148 +694,68 @@ async function continueChat(){
   var subj = subjectById(sess.subjectId);
   var unit = unitById(subj, sess.unitId);
   try{
-    var reply = await callAI(sess.messages.map(stripHidden), chatSystemPrompt(subj.name, unit?unit.name:null));
+    var reply = await callAI(sess.messages, chatSystemPrompt(subj.name, unit?unit.name:null));
     sess.messages.push({role:'assistant', content:reply});
     sess.loading = false;
-  }catch(e){
-    sess.loading = false;
-    sess.error = true;
-  }
+  }catch(e){ sess.loading = false; sess.error = true; }
   renderApp();
 }
 
-RN.retry = function(){
-  var sess = state.session;
-  sess.error = null;
-  // remove trailing hidden kickoff-only state check: just retry continueChat/kickoff based on whether any assistant message exists
-  var hasAssistant = sess.messages.some(function(m){return m.role==='assistant';});
-  sess.loading = true;
-  renderApp();
-  if(hasAssistant) continueChat(); else kickoff();
-};
+RN.retry = function(){ state.session.error = null; state.session.loading = true; renderApp(); continueChat(); };
+RN.exitChat = function(){ if(confirm('ホームに戻りますか？')){ state.session = null; state.view = 'home'; renderApp(); } };
 
-RN.exitChat = function(){
-  if(state.session && state.session.messages.some(function(m){return m.role==='assistant';})){
-    if(!confirm('会話をやめて、ホームに戻りますか？（保存されていない内容は消えます）')) return;
-  }
-  state.session = null;
-  state.summaryDraft = null;
-  state.view = 'home';
-  renderApp();
-};
-
-RN.finishSession = function(){
-  state.view = 'summary';
-  state.summaryDraft = null;
-  renderApp();
-  generateSummary();
-};
+RN.finishSession = function(){ state.view = 'summary'; state.summaryDraft = null; renderApp(); generateSummary(); };
 
 async function generateSummary(){
   var sess = state.session;
   var subj = subjectById(sess.subjectId);
   var unit = unitById(subj, sess.unitId);
-  sess.error = null;
-  var msgs = sess.messages.map(stripHidden).concat([{role:'user', content:'（この会話をもとにふりかえりをまとめてください）'}]);
+  var msgs = sess.messages.concat([{role:'user', content:'（会話内容をまとめてください）'}]);
   try{
     var reply = await callAI(msgs, summarySystemPrompt(subj.name, unit?unit.name:null));
     var cleaned = reply.replace(/```json/g,'').replace(/```/g,'').trim();
-    var parsed;
-    try{ parsed = JSON.parse(cleaned); }
-    catch(e){ parsed = {manabi:'', wakatta:'', wakaranai:'', yokudekita:'', muzukashikatta:'', hitokoto: cleaned.slice(0,80)}; }
-    state.summaryDraft = {
-      manabi: parsed.manabi||'', wakatta: parsed.wakatta||'', wakaranai: parsed.wakaranai||'',
-      yokudekita: parsed.yokudekita||'', muzukashikatta: parsed.muzukashikatta||'', hitokoto: parsed.hitokoto||''
-    };
-  }catch(e){
-    sess.error = true;
-    state.summaryDraft = {manabi:'',wakatta:'',wakaranai:'',yokudekita:'',muzukashikatta:'',hitokoto:''};
-  }
+    var parsed = JSON.parse(cleaned);
+    state.summaryDraft = parsed;
+  }catch(e){ state.summaryDraft = {manabi:'', wakatta:'', wakaranai:'', yokudekita:'', muzukashikatta:'', hitokoto:''}; }
   renderApp();
 }
 
-RN.retrySummary = function(){
-  state.summaryDraft = null;
-  renderApp();
-  generateSummary();
-};
-
-RN.backToChatFromSummary = function(){
-  state.view = 'chat';
-  state.summaryDraft = null;
-  renderApp();
-};
-
-RN.updateDraft = function(el){
-  var field = el.getAttribute('data-field');
-  state.summaryDraft[field] = el.value;
-};
+RN.backToChatFromSummary = function(){ state.view = 'chat'; renderApp(); };
+RN.updateDraft = function(el){ state.summaryDraft[el.getAttribute('data-field')] = el.value; };
 
 RN.saveReflection = async function(){
   var sess = state.session;
   var subj = subjectById(sess.subjectId);
   var unit = unitById(subj, sess.unitId);
   var obj = {
-    id: uid(),
-    studentName: sess.studentName || '',
-    subjectId: subj.id,
-    subjectName: subj.name,
-    unitId: unit?unit.id:null,
-    unitName: unit?unit.name:null,
-    createdAt: Date.now(),
-    summary: state.summaryDraft,
-    transcript: sess.messages.filter(function(m){return !m.hidden;}).map(stripHidden)
+    id: uid(), studentName: sess.studentName || '', subjectId: subj.id, subjectName: subj.name,
+    unitId: unit?unit.id:null, unitName: unit?unit.name:null, createdAt: Date.now(), summary: state.summaryDraft
   };
-  try{
-    await saveReflection(obj);
-    state.reflections.unshift(obj);
-    state.session = null;
-    state.summaryDraft = null;
-    state.view = 'home';
-    renderApp();
-    showToast('保存しました');
-  }catch(e){
-    showToast('保存に失敗しました。もう一度ためしてね');
-  }
+  await saveReflection(obj);
+  state.reflections.unshift(obj);
+  state.session = null; state.view = 'home';
+  renderApp();
+  showToast('保存しました');
 };
 
 function showToast(msg){
   var t = document.getElementById('rn-toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(function(){ t.classList.remove('show'); }, 2200);
 }
 
-/* ---------------- teacher gate ---------------- */
 RN.openTeacherGate = function(){
-  state.teacherGateError = null;
-  if(state.teacherUnlocked){
-    state.view = 'teacher';
-    renderApp();
-    return;
-  }
+  if(state.teacherUnlocked){ state.view = 'teacher'; renderApp(); return; }
   state.teacherGateStep = state.teacherPin ? 'enter' : 'setup';
-  state.view = 'teachergate';
-  renderApp();
+  state.view = 'teachergate'; renderApp();
 };
-RN.exitTeacherGate = function(){ state.view='home'; renderApp(); };
 
 function renderTeacherGate(){
-  var html = '<div class="rn-page"><div class="rn-gate-wrap">';
-  html += '<div class="rn-gate-icon">🎓</div>';
+  var html = '<div class="rn-page"><div class="rn-gate-wrap"><div class="rn-gate-icon">🎓</div>';
   if(state.teacherGateStep==='setup'){
-    html += '<div class="rn-gate-title">先生用パスコードを設定</div>';
-    html += '<div class="rn-gate-desc">はじめて使うときに、先生用のパスコードを決めてください。次からこのパスコードで、教科・単元の設定や児童全員の記録を確認できます。</div>';
-    if(state.teacherGateError){ html += '<div class="rn-gate-err">'+esc(state.teacherGateError)+'</div>'; }
-    html += '<input type="password" class="rn-pin-input" id="tp-input1" placeholder="パスコード" inputmode="numeric">';
-    html += '<input type="password" class="rn-pin-input" id="tp-input2" placeholder="もう一度入力" inputmode="numeric" onkeydown="if(event.key===\'Enter\'){RN.submitTeacherSetup()}">';
-    html += '<div class="rn-gate-btnrow"><button class="rn-cta" onclick="RN.submitTeacherSetup()">設定する</button><button class="rn-secondary-btn" onclick="RN.exitTeacherGate()">もどる</button></div>';
+    html += '<div class="rn-gate-title">パスコード設定</div><input type="password" class="rn-pin-input" id="tp-input1" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherSetup()">設定</button>';
   } else {
-    html += '<div class="rn-gate-title">せんせい用</div>';
-    html += '<div class="rn-gate-desc">パスコードを入力してください。</div>';
-    if(state.teacherGateError){ html += '<div class="rn-gate-err">'+esc(state.teacherGateError)+'</div>'; }
-    html += '<input type="password" class="rn-pin-input" id="tp-input" placeholder="パスコード" inputmode="numeric" onkeydown="if(event.key===\'Enter\'){RN.submitTeacherPin()}">';
-    html += '<div class="rn-gate-btnrow"><button class="rn-cta" onclick="RN.submitTeacherPin()">入力する</button><button class="rn-secondary-btn" onclick="RN.exitTeacherGate()">もどる</button></div>';
+    html += '<div class="rn-gate-title">せんせい用</div><input type="password" class="rn-pin-input" id="tp-input" placeholder="パスコード"><button class="rn-cta" onclick="RN.submitTeacherPin()">入力</button>';
   }
   html += '</div></div>';
   return html;
@@ -1004,144 +763,22 @@ function renderTeacherGate(){
 
 RN.submitTeacherSetup = async function(){
   var p1 = document.getElementById('tp-input1').value.trim();
-  var p2 = document.getElementById('tp-input2').value.trim();
-  if(!p1){ state.teacherGateError='パスコードを入力してください'; renderApp(); return; }
-  if(p1!==p2){ state.teacherGateError='パスコードが一致しません'; renderApp(); return; }
-  await saveTeacherPin(p1);
-  state.teacherUnlocked = true;
-  state.teacherGateError = null;
-  state.view = 'teacher';
-  state.teacherTab = 'records';
-  renderApp();
+  if(!p1) return;
+  await saveTeacherPin(p1); state.teacherUnlocked = true; state.view = 'teacher'; renderApp();
 };
 RN.submitTeacherPin = function(){
-  var el = document.getElementById('tp-input');
-  var p = el ? el.value.trim() : '';
-  if(p && p===state.teacherPin){
-    state.teacherUnlocked = true;
-    state.teacherGateError = null;
-    state.view = 'teacher';
-    state.teacherTab = 'records';
-    renderApp();
-  } else {
-    state.teacherGateError = 'パスコードが違います';
-    renderApp();
-  }
+  var p = document.getElementById('tp-input').value.trim();
+  if(p === state.teacherPin){ state.teacherUnlocked = true; state.view = 'teacher'; renderApp(); }
 };
-
-/* ---------------- teacher area ---------------- */
-RN.closeTeacherArea = function(){ state.view='home'; renderApp(); };
-RN.setTeacherTab = function(tab){ state.teacherTab = tab; renderApp(); };
-RN.setTeacherStudentFilter = function(v){ state.teacherStudentFilter = v; renderApp(); };
-RN.setTeacherSubjectFilter = function(v){ state.teacherSubjectFilter = v; renderApp(); };
 
 function renderTeacherArea(){
-  var html = '<div class="rn-chat-header">';
-  html += '<button class="rn-back" onclick="RN.closeTeacherArea()" aria-label="もどる"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>';
-  html += '<div class="rn-chat-meta"><b>せんせい用</b>の画面です</div>';
-  html += '</div>';
-  html += '<div class="rn-page">';
-  html += '<div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
-  html += '<div class="rn-teach-tabs">';
-  html += '<button class="rn-teach-tab'+(state.teacherTab==='records'?' active':'')+'" onclick="RN.setTeacherTab(\'records\')">児童の記録を見る</button>';
-  html += '<button class="rn-teach-tab'+(state.teacherTab==='settings'?' active':'')+'" onclick="RN.setTeacherTab(\'settings\')">教科・単元の設定</button>';
-  html += '</div>';
-  if(state.teacherTab==='records') html += renderTeacherRecords();
-  else html += renderTeacherSettings();
+  var html = '<div class="rn-chat-header"><button class="rn-back" onclick="state.view=\'home\';renderApp();"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button><div class="rn-chat-meta"><b>せんせい用</b></div></div>';
+  html += '<div class="rn-page"><div class="rn-rings">'+repeat('<span></span>',9)+'</div>';
+  state.reflections.forEach(function(r){ html += renderHistoryCard(r, {showStudent:true, deletable:true}); });
   html += '</div>';
   return html;
 }
 
-function renderTeacherRecords(){
-  var html = '';
-  var names = [];
-  state.reflections.forEach(function(r){
-    var n = (r.studentName||'').trim() || 'なまえ未入力';
-    if(names.indexOf(n)===-1) names.push(n);
-  });
-  names.sort();
-  html += '<div class="rn-teach-filters">';
-  html += '<select class="rn-select" onchange="RN.setTeacherStudentFilter(this.value)">';
-  html += '<option value="all"'+(state.teacherStudentFilter==='all'?' selected':'')+'>全員</option>';
-  names.forEach(function(n){
-    html += '<option value="'+esc(n)+'"'+(state.teacherStudentFilter===n?' selected':'')+'>'+esc(n)+'</option>';
-  });
-  html += '</select>';
-  html += '<select class="rn-select" onchange="RN.setTeacherSubjectFilter(this.value)">';
-  html += '<option value="all"'+(state.teacherSubjectFilter==='all'?' selected':'')+'>すべての教科</option>';
-  state.subjects.forEach(function(s){
-    html += '<option value="'+s.id+'"'+(state.teacherSubjectFilter===s.id?' selected':'')+'>'+esc(s.name)+'</option>';
-  });
-  html += '</select>';
-  html += '</div>';
-
-  var list = state.reflections.filter(function(r){
-    var n = (r.studentName||'').trim() || 'なまえ未入力';
-    var matchName = state.teacherStudentFilter==='all' || n===state.teacherStudentFilter;
-    var matchSubj = state.teacherSubjectFilter==='all' || r.subjectId===state.teacherSubjectFilter;
-    return matchName && matchSubj;
-  });
-  html += '<div class="rn-teach-count">'+list.length+'件のきろく</div>';
-  if(!list.length){
-    html += '<div class="rn-empty-state">まだきろくがありません。</div>';
-  } else {
-    list.forEach(function(r){ html += renderHistoryCard(r, {showStudent:true, deletable:true}); });
-  }
-  return html;
-}
-
-function renderTeacherSettings(){
-  var html = '';
-  state.subjects.forEach(function(s){
-    html += '<div class="rn-subj-block">';
-    html += '<div class="rn-subj-block-head"><div class="rn-subj-name"><span class="rn-dot" style="background:'+s.color+'"></span>'+esc(s.name)+'</div>';
-    html += '<button class="rn-trash-btn" onclick="RN.removeSubject(\''+s.id+'\')" aria-label="教科を削除"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16Z"/></svg></button></div>';
-    html += '<div>';
-    s.units.forEach(function(u){
-      html += '<span class="rn-unit-chip">'+esc(u.name)+' <button onclick="RN.removeUnit(\''+s.id+'\',\''+u.id+'\')">×</button></span>';
-    });
-    html += '</div>';
-    html += '<div class="rn-addrow"><input type="text" placeholder="単元を追加（例：光と音）" id="unit-input-'+s.id+'" onkeydown="if(event.key===\'Enter\'){RN.addUnit(\''+s.id+'\')}"><button onclick="RN.addUnit(\''+s.id+'\')">追加</button></div>';
-    html += '</div>';
-  });
-  html += '<div class="rn-addrow" style="margin-top:14px;"><input type="text" placeholder="教科を追加（例：音楽）" id="subject-input" onkeydown="if(event.key===\'Enter\'){RN.addSubject()}"><button onclick="RN.addSubject()">教科を追加</button></div>';
-  return html;
-}
-
-RN.addSubject = async function(){
-  var input = document.getElementById('subject-input');
-  var name = input.value.trim();
-  if(!name) return;
-  var color = COLORS[state.subjects.length % COLORS.length];
-  state.subjects.push({id:uid(), name:name, color:color, units:[]});
-  await saveSubjects();
-  renderApp();
-};
-RN.removeSubject = async function(id){
-  if(!confirm('この教科を削除しますか？（過去のふりかえり記録は残ります）')) return;
-  state.subjects = state.subjects.filter(function(s){return s.id!==id;});
-  if(state.selectedSubjectId===id){ state.selectedSubjectId=null; state.selectedUnitId=null; }
-  await saveSubjects();
-  renderApp();
-};
-RN.addUnit = async function(subjId){
-  var input = document.getElementById('unit-input-'+subjId);
-  var name = input.value.trim();
-  if(!name) return;
-  var subj = subjectById(subjId);
-  subj.units.push({id:uid(), name:name});
-  await saveSubjects();
-  renderApp();
-};
-RN.removeUnit = async function(subjId, unitId){
-  var subj = subjectById(subjId);
-  subj.units = subj.units.filter(function(u){return u.id!==unitId;});
-  if(state.selectedUnitId===unitId) state.selectedUnitId=null;
-  await saveSubjects();
-  renderApp();
-};
-
-/* ---------------- init ---------------- */
 async function init(){
   await loadSubjects();
   await loadReflections();
