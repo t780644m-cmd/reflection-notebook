@@ -255,7 +255,7 @@ const FIREBASE_CONFIG = {
   appId: "1:908464134365:web:68edba9d71643d5bb1a334"
 };
 
-const GEMINI_API_KEY = "AQ.Ab8RN6LoPDWa2Rxpi53Nl4J4dIQYZv7rYsnDPLhePNIKMiZXZw";
+const GEMINI_KEY = "AQ.Ab8RN6LoPDWa2Rxpi53Nl4J4dIQYZv7rYsnDPLhePNIKMiZXZw";
 
 const firebaseApp = initializeApp(FIREBASE_CONFIG);
 const db = getFirestore(firebaseApp);
@@ -393,7 +393,7 @@ async function saveTeacherPin(pin){
   state.teacherPin = pin;
 }
 
-/* Gemini API Robust Handler */
+/* Gemini Dual Authentication Handler */
 async function callAI(messages, system){
   var contents = [];
   messages.forEach(function(m){
@@ -403,23 +403,32 @@ async function callAI(messages, system){
     });
   });
 
-  var endpoints = [
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API_KEY,
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=" + GEMINI_API_KEY,
-    "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=" + GEMINI_API_KEY
-  ];
+  var payload = JSON.stringify({
+    systemInstruction: { parts: [{ text: system }] },
+    contents: contents
+  });
 
+  var isOAuthToken = GEMINI_KEY.startsWith("AQ.");
+  var models = ["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"];
   var lastErr = null;
-  for(var i=0; i<endpoints.length; i++){
+
+  for(var i=0; i<models.length; i++){
     try {
-      var res = await fetch(endpoints[i], {
+      var url = "https://generativelanguage.googleapis.com/v1beta/models/" + models[i] + ":generateContent";
+      var headers = {"Content-Type": "application/json"};
+      
+      if(isOAuthToken){
+        headers["Authorization"] = "Bearer " + GEMINI_KEY;
+      } else {
+        url += "?key=" + GEMINI_KEY;
+      }
+
+      var res = await fetch(url, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: system }] },
-          contents: contents
-        })
+        headers: headers,
+        body: payload
       });
+
       if(res.ok){
         var data = await res.json();
         if(data.candidates && data.candidates[0] && data.candidates[0].content){
